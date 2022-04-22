@@ -1,4 +1,51 @@
+.genre {
+  height: 57px;
+  width: 80%;
+  display: flex;
+  padding: 30px 0;
+}
+
+.button {
+  background: rgba(50, 50, 50, 0.8);
+  border-radius: 4px;
+  width: 100%;
+  padding: 0 10px 0 0px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.button span {
+  padding: 0 0 0 30px;
+  line-height: 57px;
+}
+.button span:after {
+  line-height: 57px;
+  content: "\25B2";
+  font-weight: 900;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  color: #e64c5a;
+}
+.open:after {
+  transform: rotate(180deg);
+}
+
+.hide {
+  display: none !important;
+}
 .dropdown {
+  position: absolute;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #141414;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -6,8 +53,10 @@
 
 .option {
   display: flex;
-  padding: 2px;
+  padding: 5px 10px;
+  align-items: center;
 }
+
 .option label {
   padding: 0 5px;
 }
@@ -15,6 +64,8 @@
   -webkit-appearance: none;
   background-color: #fafafa;
   padding: 7px;
+  height: 7px;
+  width: 7px;
   border-radius: 2px;
   position: relative;
 }
