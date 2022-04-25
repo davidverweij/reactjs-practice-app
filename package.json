@@ -16,7 +16,8 @@
     "pretty:fix": "prettier --write .",
     "lint": "npm run eslint && npm run pretty",
     "lint:fix": "npm run eslint:fix && npm run pretty:fix",
-    "precommit": "husky install"
+    "precommit": "husky install",
+    "type-check": "tsc"
   },
   "repository": {
     "type": "git",
