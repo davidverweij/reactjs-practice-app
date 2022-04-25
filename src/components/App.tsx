@@ -1,13 +1,13 @@
 import React from "react";
 
-interface HomePageProps {
+interface AppProps {
   message: string;
 }
 
-const App = (props: HomePageProps) => {
+const App = ({ message }: AppProps) => {
   return (
     <div>
-      <h1>{props.message}</h1>
+      <h1>{message}</h1>
     </div>
   );
 };
