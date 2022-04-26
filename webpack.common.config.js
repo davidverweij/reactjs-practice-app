@@ -21,8 +21,25 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.s?[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "@teamsupercell/typings-for-css-modules-loader",
+            options: {
+              disableLocalsExport: true,
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+          "resolve-url-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true, // required for resolve-url-loader
+            },
+          },
+        ],
       },
     ],
   },

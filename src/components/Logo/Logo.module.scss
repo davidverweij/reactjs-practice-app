@@ -1,0 +1,10 @@
+@use "../../utils/variables" as v;
+
+.logo {
+  @include v.regular;
+  color: v.$red;
+}
+
+.thick {
+  @include v.bold;
+}
