@@ -1,0 +1,18 @@
+@use "../../style/variables" as v;
+
+.header {
+  height: 369px;
+}
+
+.header-img {
+  content: url("../../images/header.jpg");
+  opacity: 0.3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  z-index: -1;
+}

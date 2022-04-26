@@ -30,7 +30,10 @@ module.exports = {
               disableLocalsExport: true,
             },
           },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: { modules: true },
+          },
           "postcss-loader",
           "resolve-url-loader",
           {

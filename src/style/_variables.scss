@@ -5,8 +5,13 @@ $base-dark: #232323;
 $base-regular: #424242;
 $base-light: #555555;
 $white: #ffffff;
+$black: #000000;
 
 /* Fonts */
+
+@mixin light {
+  font-weight: 300;
+}
 
 @mixin regular {
   font-weight: 400;

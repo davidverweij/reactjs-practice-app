@@ -1,5 +1,9 @@
+@use "variables" as v;
+
 @import "./fonts/montserrat-var";
 
 body {
   font-family: "Montserrat Variable", sans-serif;
+  padding: 23px 60px;
+  background-color: v.$black;
 }

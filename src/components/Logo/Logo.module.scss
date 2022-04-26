@@ -1,8 +1,10 @@
-@use "../../utils/variables" as v;
+@use "../../style/variables" as v;
 
 .logo {
   @include v.regular;
   color: v.$red;
+  font-size: 20px;
+  position: absolute;
 }
 
 .thick {

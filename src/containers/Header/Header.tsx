@@ -1,7 +1,17 @@
 import React from "react";
+import styles from "./Header.module.scss";
 
-const Header = () => {
-  return <div></div>;
+interface HeaderProps {
+  children?: any;
+}
+
+const Header = ({ children }: HeaderProps) => {
+  return (
+    <>
+      <img className={styles["header-img"]} />
+      <div className={styles.header}>{children}</div>
+    </>
+  );
 };
 
 export default Header;

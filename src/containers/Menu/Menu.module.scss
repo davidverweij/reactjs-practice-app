@@ -1,0 +1,20 @@
+@use "../../style/variables" as v;
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.button {
+  @include v.semi-bold;
+  font-size: 20px;
+  color: v.$red;
+  background-color: rgba(v.$base-light, 0.6);
+  align-self: flex-end;
+}
+
+.search {
+  height: 100%;
+  padding: 0 60px;
+}

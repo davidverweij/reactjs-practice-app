@@ -7,11 +7,11 @@ import Header from "./containers/Header/Header";
 const App = () => {
   return (
     <>
-      <Menu />
-      <Header />
+      <Header>
+        <Menu />
+      </Header>
       <Dashboard />
       <Footer />
-      <p>Hello there</p>
     </>
   );
 };
