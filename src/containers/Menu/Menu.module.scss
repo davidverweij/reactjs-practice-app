@@ -1,6 +1,8 @@
 @use "../../style/variables" as v;
 
 .menu {
+  padding: 0 v.$side-padding;
+
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -15,6 +17,5 @@
 }
 
 .search {
-  height: 100%;
   padding: 0 60px;
 }
