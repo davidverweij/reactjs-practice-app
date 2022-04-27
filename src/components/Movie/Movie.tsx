@@ -9,7 +9,7 @@ export interface MovieProps {
   imgUrl: string;
 }
 
-const EditButton = (): JSX.Element => {
+const ContextMenuButton = (): JSX.Element => {
   return (
     <div className={styles.edit}>
       <div />
@@ -27,7 +27,6 @@ const Movie = ({
   releaseDate,
   imgUrl,
 }: MovieProps): JSX.Element => {
-  console.log(imgUrl);
   return (
     <div className={styles.movie}>
       <img src={imgUrl} />
@@ -36,7 +35,7 @@ const Movie = ({
         <span className={styles.date}>{releaseDate}</span>
       </div>
       <span className={styles.genre}>{genre}</span>
-      <EditButton />
+      <ContextMenuButton />
     </div>
   );
 };
