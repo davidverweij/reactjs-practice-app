@@ -1,0 +1,12 @@
+@use "../../style/variables" as v;
+
+.error-container {
+  @include v.regular;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: v.$white;
+  background-color: v.$base-light;
+  padding: 50px 0;
+}
