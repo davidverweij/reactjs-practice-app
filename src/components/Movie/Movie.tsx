@@ -9,6 +9,18 @@ export interface MovieProps {
   imgUrl: any;
 }
 
+const EditButton = () => {
+  return (
+    <div className={styles.edit}>
+      <div />
+      <div className={styles.dot} />
+      <div className={styles.dot} />
+      <div className={styles.dot} />
+      <div />
+    </div>
+  );
+};
+
 const Movie = ({ title, genre, releaseDate, imgUrl }: MovieProps) => {
   return (
     <div className={styles.movie}>
@@ -18,6 +30,7 @@ const Movie = ({ title, genre, releaseDate, imgUrl }: MovieProps) => {
         <span className={styles.date}>{releaseDate}</span>
       </div>
       <span className={styles.genre}>{genre}</span>
+      <EditButton />
     </div>
   );
 };

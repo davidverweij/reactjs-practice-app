@@ -2,9 +2,39 @@
 
 .movie {
   color: v.$white;
+  position: relative;
   img {
     width: 100%;
   }
+  .edit {
+    content: "";
+    width: 36px;
+    height: 36px;
+    background-color: v.$base-dark;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    margin: 14px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+
+    .dot {
+      content: "";
+      height: 4px;
+      width: 4px;
+      background-color: v.$white;
+      border-radius: 50%;
+    }
+  }
+}
+
+.movie:hover > .edit,
+.edit:hover {
+  display: flex !important;
 }
 
 .caption {
