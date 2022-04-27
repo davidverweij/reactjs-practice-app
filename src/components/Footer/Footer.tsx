@@ -1,9 +1,9 @@
 import React from "react";
-import Logo from "../../components/Logo/Logo";
+import Logo from "../Logo/Logo";
 
 import styles from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <div className={styles.footer}>
       <Logo />

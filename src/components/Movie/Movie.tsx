@@ -6,10 +6,10 @@ export interface MovieProps {
   title: string;
   genre: string;
   releaseDate: number;
-  imgUrl: any;
+  imgUrl: string;
 }
 
-const EditButton = () => {
+const EditButton = (): JSX.Element => {
   return (
     <div className={styles.edit}>
       <div />
@@ -21,7 +21,13 @@ const EditButton = () => {
   );
 };
 
-const Movie = ({ title, genre, releaseDate, imgUrl }: MovieProps) => {
+const Movie = ({
+  title,
+  genre,
+  releaseDate,
+  imgUrl,
+}: MovieProps): JSX.Element => {
+  console.log(imgUrl);
   return (
     <div className={styles.movie}>
       <img src={imgUrl} />

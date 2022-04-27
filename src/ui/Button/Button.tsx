@@ -8,7 +8,7 @@ interface ButtonProps {
   className?: string;
 }
 
-const Button = ({ text, onClick, className }: ButtonProps) => {
+const Button = ({ text, onClick, className }: ButtonProps): JSX.Element => {
   return (
     <button onClick={onClick} className={`${className} ${styles.button}`}>
       {text}

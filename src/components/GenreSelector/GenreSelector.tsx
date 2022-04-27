@@ -6,7 +6,7 @@ interface GenreSelectorProps {
   genres: string[];
 }
 
-const GenreSelector = ({ genres }: GenreSelectorProps) => {
+const GenreSelector = ({ genres }: GenreSelectorProps): JSX.Element => {
   // Why is the error-boundary not invoked?
   const fakeError = () => {
     throw new Error("I crashed!");

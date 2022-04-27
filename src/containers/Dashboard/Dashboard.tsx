@@ -49,7 +49,7 @@ const movies: MovieProps[] = [
   },
 ];
 
-const Dashboard = () => {
+const Dashboard = (): JSX.Element => {
   return (
     <div className={styles.dashboard}>
       <FilterBar genres={genres} sortOptions={sortOptions} />

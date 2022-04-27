@@ -7,7 +7,7 @@ interface MovieListProps {
   movies: MovieProps[];
 }
 
-const MovieList = ({ movies }: MovieListProps) => {
+const MovieList = ({ movies }: MovieListProps): JSX.Element => {
   return (
     <>
       <div className={styles.stats}>

@@ -7,7 +7,7 @@ interface SortByDropdownProps {
   sortby: string[];
 }
 
-const SortByDropdown = ({ show, sortby }: SortByDropdownProps) => {
+const SortByDropdown = ({ show, sortby }: SortByDropdownProps): JSX.Element => {
   return (
     <div className={`${styles.dropdown} ${styles.hide}`}>
       {sortby.map((sort) => {

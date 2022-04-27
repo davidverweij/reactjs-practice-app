@@ -7,7 +7,7 @@ interface SortBySelectorProps {
   sortby: string[];
 }
 
-const SortBySelector = ({ sortby }: SortBySelectorProps) => {
+const SortBySelector = ({ sortby }: SortBySelectorProps): JSX.Element => {
   return (
     <div className={styles.sort}>
       <span className={styles["sort-label"]}>SORT BY</span>

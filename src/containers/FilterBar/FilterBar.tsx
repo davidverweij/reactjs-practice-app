@@ -9,7 +9,7 @@ interface FilterBarProps {
   sortOptions: string[];
 }
 
-const FilterBar = ({ genres, sortOptions }: FilterBarProps) => {
+const FilterBar = ({ genres, sortOptions }: FilterBarProps): JSX.Element => {
   const genresUpper = genres.map((g) => g.toUpperCase());
   const sortUpper = sortOptions.map((s) => s.toUpperCase());
 

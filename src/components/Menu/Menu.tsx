@@ -2,11 +2,10 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../ui/Button/Button";
-import Title from "../Title/Title";
 
 import styles from "./Menu.module.scss";
 
-const Menu = () => {
+const Menu = (): JSX.Element => {
   const onClickHandler = () => {
     console.warn("Not (yet) implemented");
   };

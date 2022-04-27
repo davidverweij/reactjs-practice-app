@@ -8,7 +8,7 @@ interface SearchBarProps {
   className?: string;
 }
 
-const SearchBar = ({ className }: SearchBarProps) => {
+const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
   const onClickHandler = () => {
     console.warn("Not (yet) implemented");
   };

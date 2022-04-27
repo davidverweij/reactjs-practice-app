@@ -6,7 +6,7 @@ import Header from "./containers/Header/Header";
 import Hr from "./ui/Hr/Hr";
 import ErrorBoundary from "./containers/ErrorBoundary/ErrorBoundary";
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <>
       <Header>
