@@ -1,67 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./GenreSelector.module.scss";
 
 interface GenreSelectorProps {
-  genres: Array<string>;
-  sortOptions: Array<string>;
+  genres: string[];
 }
 
-const GenreSelector = ({ genres, sortOptions }: GenreSelectorProps) => {
-  const genresUpper = genres.map((g) => g.toUpperCase());
-  const sortUpper = sortOptions.map((s) => s.toUpperCase());
-
-  const [showGenreState, setShowGenreState] = useState(false);
-  const [selectedSortState, setSelectedSortState] = useState(sortUpper[0]);
-
-  const showGenreHandler = () => {
-    setShowGenreState(!showGenreState);
-  };
-
-  const setSortHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setSelectedSortState(event.currentTarget.value);
-    setShowGenreState(!showGenreState);
+const GenreSelector = ({ genres }: GenreSelectorProps) => {
+  // Why is the error-boundary not invoked?
+  const fakeError = () => {
+    throw new Error("I crashed!");
   };
 
   return (
-    <>
-      <div className={styles.selector}>
-        <div className={styles.genres}>
-          {genresUpper.map((genre, index) => (
-            <div className={index == 0 ? styles.selected : ""} key={genre}>
-              {genre}
-            </div>
-          ))}
+    <div className={styles.genres}>
+      {genres.map((genre, index) => (
+        <div className={index == 0 ? styles.selected : ""} key={genre}>
+          <span onClick={fakeError}>{genre}</span>
         </div>
-        <div className={styles.sort}>
-          <span className={styles["sort-label"]}>SORT BY</span>
-          <div className={styles["select-wrapper"]}>
-            <div
-              onClick={showGenreHandler}
-              className={`${styles.button} ${
-                showGenreState ? styles.open : ""
-              }`}
-            >
-              <span>{selectedSortState}</span>
-            </div>
-            <div
-              className={`${!showGenreState ? styles.hide : ""} ${
-                styles.dropdown
-              }`}
-            >
-              {sortUpper.map((sort) => {
-                return (
-                  <button onClick={setSortHandler} value={sort} key={sort}>
-                    {sort}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr className={styles.hr} />
-    </>
+      ))}
+    </div>
   );
 };
 

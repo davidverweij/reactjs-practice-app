@@ -4,3 +4,11 @@
   padding: 0 v.$side-padding 73px v.$side-padding;
   background-color: v.$base-dark;
 }
+
+.hr {
+  height: 2px;
+  background-color: v.$base-light;
+  border: 0px;
+  border-bottom: 1px solid v.$black;
+  margin: 0;
+}

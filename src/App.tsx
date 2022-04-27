@@ -1,9 +1,10 @@
 import React from "react";
-import Menu from "./containers/Menu/Menu";
+import Menu from "./components/Menu/Menu";
 import Dashboard from "./containers/Dashboard/Dashboard";
-import Footer from "./containers/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import Header from "./containers/Header/Header";
 import Hr from "./ui/Hr/Hr";
+import ErrorBoundary from "./containers/ErrorBoundary/ErrorBoundary";
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
         <Menu />
       </Header>
       <Hr />
-      <Dashboard />
+      <ErrorBoundary>
+        <Dashboard />
+      </ErrorBoundary>
       <Footer />
     </>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
-import Title from "../../ui/Title/Title";
+import Title from "../Title/Title";
 
 import styles from "./SearchBar.module.scss";
 

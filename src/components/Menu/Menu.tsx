@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../../components/Logo/Logo";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import Logo from "../Logo/Logo";
+import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../ui/Button/Button";
-import Title from "../../ui/Title/Title";
+import Title from "../Title/Title";
 
 import styles from "./Menu.module.scss";
 

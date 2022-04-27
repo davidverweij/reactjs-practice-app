@@ -1,0 +1,10 @@
+@use "../../style/variables" as v;
+
+.selector {
+  @include v.regular;
+  color: v.$white;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 0;
+}

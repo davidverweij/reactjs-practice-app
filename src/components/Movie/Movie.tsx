@@ -17,7 +17,7 @@ const Movie = ({ title, genre, releaseDate, imgUrl }: MovieProps) => {
         <span>{title}</span>
         <span className={styles.date}>{releaseDate}</span>
       </div>
-      <div className={styles.genre}>{genre}</div>
+      <span className={styles.genre}>{genre}</span>
     </div>
   );
 };
