@@ -1,5 +1,6 @@
 import React from "react";
 import GenreSelector from "../../components/GenreSelector/GenreSelector";
+import MovieList from "../MovieList/MovieList";
 
 import styles from "./Dashboard.module.scss";
 
@@ -10,6 +11,7 @@ const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
       <GenreSelector genres={genres} sortOptions={sortOptions} />
+      <MovieList />
     </div>
   );
 };

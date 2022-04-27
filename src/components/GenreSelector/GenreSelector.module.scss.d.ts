@@ -4,8 +4,10 @@ declare namespace GenreSelectorModuleScssNamespace {
     dropdown: string;
     genres: string;
     hide: string;
+    hr: string;
     open: string;
     "select-wrapper": string;
+    selected: string;
     selector: string;
     sort: string;
     "sort-label": string;

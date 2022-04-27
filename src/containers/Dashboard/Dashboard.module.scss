@@ -1,8 +1,6 @@
 @use "../../style/variables" as v;
 
 .dashboard {
-  padding: 0 v.$side-padding;
-
+  padding: 0 v.$side-padding 73px v.$side-padding;
   background-color: v.$base-dark;
-  height: 1000px;
 }

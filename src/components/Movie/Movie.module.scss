@@ -1,0 +1,28 @@
+@use "../../style/variables" as v;
+
+.movie {
+  color: v.$white;
+  img {
+    width: 100%;
+  }
+}
+
+.caption {
+  opacity: 0.7;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 18px;
+  padding: 22px 0 8px 0;
+
+  .date {
+    font-size: 14px;
+    padding: 5px 12px;
+    border: 1px rgba(v.$grey, 0.5) solid;
+    border-radius: 4px;
+  }
+}
+.genre {
+  opacity: 0.5;
+  font-size: 14px;
+}
