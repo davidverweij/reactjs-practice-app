@@ -7,23 +7,31 @@ interface MovieListProps {
   movies: MovieProps[];
 }
 
+const movieListMapper = ({
+  title,
+  genre,
+  releaseDate,
+  imgUrl,
+}: MovieProps): JSX.Element => {
+  return (
+    <Movie
+      key={title}
+      title={title}
+      genre={genre}
+      releaseDate={releaseDate}
+      imgUrl={imgUrl}
+    />
+  );
+};
+
 const MovieList = ({ movies }: MovieListProps): JSX.Element => {
+  const movieList = movies.map(movieListMapper);
   return (
     <>
       <div className={styles.stats}>
         <span className={styles.thick}>39</span> movies found
       </div>
-      <div className={styles.grid}>
-        {movies.map((movie) => (
-          <Movie
-            key={movie.title}
-            title={movie.title}
-            genre={movie.genre}
-            releaseDate={movie.releaseDate}
-            imgUrl={movie.imgUrl}
-          />
-        ))}
-      </div>
+      <div className={styles.grid}>{movieList}</div>
     </>
   );
 };

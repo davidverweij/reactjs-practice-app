@@ -6,17 +6,19 @@ interface SortByDropdownProps {
   sortby: string[];
 }
 
-const SortByDropdown = ({ sortby }: SortByDropdownProps): JSX.Element => {
+const sortByMapper = (sort: string): JSX.Element => {
   return (
-    <div className={`${styles.dropdown} ${styles.hide}`}>
-      {sortby.map((sort) => {
-        return (
-          <button type="button" onClick={() => {}} value={sort} key={sort}>
-            {sort}
-          </button>
-        );
-      })}
-    </div>
+    <button type="button" onClick={() => {}} value={sort} key={sort}>
+      {sort}
+    </button>
+  );
+};
+
+const SortByDropdown = ({ sortby }: SortByDropdownProps): JSX.Element => {
+  const sortbyList = sortby.map(sortByMapper);
+
+  return (
+    <div className={`${styles.dropdown} ${styles.hide}`}>{sortbyList}</div>
   );
 };
 

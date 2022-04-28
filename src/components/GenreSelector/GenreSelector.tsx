@@ -6,16 +6,17 @@ interface GenreSelectorProps {
   genres: string[];
 }
 
-const GenreSelector = ({ genres }: GenreSelectorProps): JSX.Element => {
+const genreMapper = (genre: string, index: number): JSX.Element => {
   return (
-    <div className={styles.genres}>
-      {genres.map((genre, index) => (
-        <div className={index === 0 ? styles.selected : ""} key={genre}>
-          <span>{genre}</span>
-        </div>
-      ))}
+    <div className={index === 0 ? styles.selected : ""} key={genre}>
+      <span>{genre}</span>
     </div>
   );
+};
+
+const GenreSelector = ({ genres }: GenreSelectorProps): JSX.Element => {
+  const genreList = genres.map(genreMapper);
+  return <div className={styles.genres}>{genreList}</div>;
 };
 
 export default GenreSelector;
