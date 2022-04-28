@@ -9,6 +9,22 @@ const GenreToggle = (props) => {
     setShowGenreState(!showGenreState);
   };
 
+  const renderGenre = (genre) => {
+    return (
+      <div className={styles.option} key={genre}>
+        <input
+          className={styles.checkbox}
+          type="checkbox"
+          id={genre}
+          name={genre}
+        ></input>
+        <label htmlFor={genre}>{genre}</label>
+      </div>
+    );
+  };
+
+  const genres = props.genres.map(renderGenre);
+
   return (
     <div className={styles.genre}>
       <div className={styles.button}>
@@ -20,19 +36,7 @@ const GenreToggle = (props) => {
         <div
           className={`${!showGenreState ? styles.hide : ""} ${styles.dropdown}`}
         >
-          {props.genres.map((genre) => {
-            return (
-              <div className={styles.option} key={genre}>
-                <input
-                  className={styles.checkbox}
-                  type="checkbox"
-                  id={genre}
-                  name={genre}
-                ></input>
-                <label htmlFor={genre}>{genre}</label>
-              </div>
-            );
-          })}
+          {genres}
         </div>
       </div>
     </div>

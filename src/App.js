@@ -13,7 +13,7 @@ function App() {
     { className: "App" },
     <StaticHeader />,
     React.createElement(
-      "header",
+      "section",
       { className: "App-header" },
       <Counter />,
       <SearchBar />,
