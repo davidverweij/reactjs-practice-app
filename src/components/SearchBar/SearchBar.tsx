@@ -9,7 +9,8 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
-  const onClickHandler = () => {
+  const onClickHandler = (): void => {
+    // eslint-disable-next-line no-console
     console.warn("Not (yet) implemented");
   };
 
@@ -21,12 +22,12 @@ const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
           className={styles.bar}
           type="text"
           placeholder="What do you want to watch?"
-        ></input>
+        />
         <Button
           className={styles.button}
           text="SEARCH"
           onClick={onClickHandler}
-        ></Button>
+        />
       </div>
       <div />
     </div>

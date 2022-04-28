@@ -6,7 +6,8 @@ import Button from "../../ui/Button/Button";
 import styles from "./Menu.module.scss";
 
 const Menu = (): JSX.Element => {
-  const onClickHandler = () => {
+  const onClickHandler = (): void => {
+    // eslint-disable-next-line no-console
     console.warn("Not (yet) implemented");
   };
 

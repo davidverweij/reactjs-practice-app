@@ -3,16 +3,15 @@ import React from "react";
 import styles from "./SortByDropdown.module.scss";
 
 interface SortByDropdownProps {
-  show: boolean;
   sortby: string[];
 }
 
-const SortByDropdown = ({ show, sortby }: SortByDropdownProps): JSX.Element => {
+const SortByDropdown = ({ sortby }: SortByDropdownProps): JSX.Element => {
   return (
     <div className={`${styles.dropdown} ${styles.hide}`}>
       {sortby.map((sort) => {
         return (
-          <button onClick={() => {}} value={sort} key={sort}>
+          <button type="button" onClick={() => {}} value={sort} key={sort}>
             {sort}
           </button>
         );

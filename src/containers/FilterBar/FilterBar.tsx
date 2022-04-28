@@ -14,12 +14,10 @@ const FilterBar = ({ genres, sortOptions }: FilterBarProps): JSX.Element => {
   const sortUpper = sortOptions.map((s) => s.toUpperCase());
 
   return (
-    <>
-      <div className={styles.selector}>
-        <GenreSelector genres={genresUpper} />
-        <SortBySelector sortby={sortUpper} />
-      </div>
-    </>
+    <div className={styles.selector}>
+      <GenreSelector genres={genresUpper} />
+      <SortBySelector sortby={sortUpper} />
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const GenreSelector = ({ genres }: GenreSelectorProps): JSX.Element => {
   return (
     <div className={styles.genres}>
       {genres.map((genre, index) => (
-        <div className={index == 0 ? styles.selected : ""} key={genre}>
+        <div className={index === 0 ? styles.selected : ""} key={genre}>
           <span>{genre}</span>
         </div>
       ))}

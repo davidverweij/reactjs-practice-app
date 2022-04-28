@@ -1,3 +1,7 @@
+/* eslint-disable global-require */
+// NOTE: disable global-require for dummy data, will be removed
+// once data is fed top-down
+
 import React from "react";
 import FilterBar from "../FilterBar/FilterBar";
 import { MovieProps } from "../../components/Movie/Movie";

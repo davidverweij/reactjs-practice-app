@@ -8,7 +8,10 @@ interface HeaderProps {
 const Header = ({ children }: HeaderProps): JSX.Element => {
   return (
     <>
-      <img className={styles["header-img"]} />
+      <img
+        alt="Blurry backdrop displaying video catalog"
+        className={styles["header-img"]}
+      />
       <div className={styles.header}>{children}</div>
     </>
   );
