@@ -7,6 +7,6 @@ const root = ReactDom.createRoot(document.getElementById("app"));
 root.render(
   <React.StrictMode>
     {/* Type error on purpose */}
-    <App message={1} />
+    <App message={"Hello GitHub Pages"} />
   </React.StrictMode>
 );
