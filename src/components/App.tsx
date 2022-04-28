@@ -4,7 +4,7 @@ interface AppProps {
   message: string;
 }
 
-const App = ({ message }: AppProps) => {
+const App = ({ message }: AppProps): JSX.Element => {
   return (
     <div>
       <h1>{message}</h1>
