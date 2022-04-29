@@ -6,6 +6,6 @@ const root = ReactDom.createRoot(document.getElementById("app"));
 
 root.render(
   <React.StrictMode>
-    <App message="Hello GitHub Pages" />
+    <App message="1" />
   </React.StrictMode>
 );
