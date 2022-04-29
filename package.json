@@ -5,6 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
+    "docker": "VERSION=$npm_package_version docker-compose up -d",
+    "docker:stop": "docker-compose down -v",
+    "docker:publish": "VERSION=$npm_package_version docker-compose push",
     "build": "webpack --config webpack.prod.js",
     "deploy": "npm run build && gh-pages -d dist",
     "eslint": "eslint .",
