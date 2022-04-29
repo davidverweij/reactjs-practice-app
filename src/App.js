@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Counter from "./components/Counter/Counter";
+import GenreToggle from "./components/GenreToggle/GenreToggle";
+import SearchBar from "./components/SearchBar/SearchBar";
+import StaticHeader from "./components/StaticHeader/StaticHeader";
+
+const genres = ["Crime", "Documentary", "Horror", "Comedy"];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return React.createElement(
+    "div",
+    { className: "App" },
+    <StaticHeader />,
+    React.createElement(
+      "section",
+      { className: "App-header" },
+      <Counter />,
+      <SearchBar />,
+      <GenreToggle genres={genres} />
+    )
   );
 }
 
