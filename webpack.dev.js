@@ -5,7 +5,6 @@ module.exports = merge(common, {
   mode: "development",
   devServer: {
     hot: true,
-    open: true,
   },
   devtool: "eval-source-map",
 });

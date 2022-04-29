@@ -1,0 +1,13 @@
+version: "3.5"
+
+volumes:
+  node_modules:
+services:
+  frontend:
+    build: ./
+    image: davidverweij/epam_reactjs:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/usr/app
+      - node_modules:/usr/app/node_modules
