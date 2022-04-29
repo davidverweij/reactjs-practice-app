@@ -1,0 +1,5 @@
+# files/folder to ignore when building the docker image (not affecting docker-compose)
+
+node_modules
+dist
+src

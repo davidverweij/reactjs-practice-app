@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# ReactJS Practice App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_A practice project for the EPAM ReactJS Mentoring Program, building a Movie database app._
 
-## Available Scripts
+### Usage
 
-In the project directory, you can run:
+This Typescript project uses `webpack` and `babel` for transpiling and bundling with hot-reloading and source-maps enabled for development and minifying and bundling for production. A pre-commit hook (using `husky`) runs `eslint` and `prettier`, whilst `babel` and `webpack` plugins check static types and compile `PropTypes` for runtime type checking (in development mode) - see below. The project can be run both with `Webpack` and `Docker`.
 
-### `npm start`
+#### Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Using Docker, you can run the development setup instantly - with hot-reloading changes within the `/src/` folder at [localhost:8080](http://localhost:8080/) run:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```shell
+docker-compose up
+# or
+docker-compose up -d  # runs in the background
+```
 
-### `npm test`
+> To use the installed NodeJS modules in the docker image, we persist this subfolder to prevent it from overriden. Tradeoff:
+>
+> - _Pro_: the image can be run 'as-is' and is OS-agnostic
+> - _Con_: the volume persist after taking container down, and new dependencies require a image rebuild.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Running Docker _only_ does not provide you with IntelliSense, static typing and all the other benefits (_within your IDE - it does so in the container though_). Instead, also setup your environment by running:
 
-### `npm run build`
+```shell
+npm install         # dependencies
+npm run precommit   # sets up pre-commit linters
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can either continue with the Docker setup, or shut it down and run it locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+docker-compose down -v # or Ctrl+C if not in detached mode
+npm start              # start dev server
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> If the Docker setup is still running, the `npm start` command will result in _another_ endpoint, e.g. [localhost:8081](http://localhost:8081/) - see you terminal for the exact endpoint.
 
-### `npm run eject`
+To bundle the project for production, run the build command and _optionally_ push to GitHub Pages with the following commands:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```shell
+npm run build
+npm run deploy
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> [typescript-to-proptypes](https://www.npmjs.com/package/babel-plugin-typescript-to-proptypes) plugin for `babel` is used to generate `PropTypes` (runtime props checking _in development_ - useful with dynamic data sources) based on `Typescript`.
+> [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin) plugin for `webpack` is used to perform _fast_ static type checking for Typescript (it does not transpile Typescript, the `babel-loader` does. However, `babel` doesn't perform Typescript checks, and `ts-loader` negates the `typescript-to-proptypes` plugin if used).
