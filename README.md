@@ -11,15 +11,13 @@ This Typescript project uses `webpack` and `babel` for transpiling and bundling 
 Using Docker, you can run the development setup instantly - with hot-reloading changes within the `/src/` folder at [localhost:8080](http://localhost:8080/) run:
 
 ```shell
-docker-compose up
-# or
-docker-compose up -d  # runs in the background
+npm run docker
 ```
 
 > To use the installed NodeJS modules in the docker image, we persist this subfolder to prevent it from overriden. Tradeoff:
 >
 > - _Pro_: the image can be run 'as-is' and is OS-agnostic
-> - _Con_: the volume persist after taking container down, and new dependencies require a image rebuild.
+> - _Con_: the volume persist after taking container down, and new dependencies require a image rebuild (with `docker-compose build`).
 
 Running Docker _only_ does not provide you with IntelliSense, static typing and all the other benefits (_within your IDE - it does so in the container though_). Instead, also setup your environment by running:
 
@@ -31,7 +29,7 @@ npm run precommit   # sets up pre-commit linters
 You can either continue with the Docker setup, or shut it down and run it locally:
 
 ```shell
-docker-compose down -v # or Ctrl+C if not in detached mode
+npm run docker:stop
 npm start              # start dev server
 ```
 
