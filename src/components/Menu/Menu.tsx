@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../ui/Button/Button";
 
 import styles from "./Menu.module.scss";
-import ICONS from "../../style/icons";
+import ICONS from "../../core/constants/ICONS";
 
 const Menu = (): JSX.Element => {
   const onClickHandler = (): void => {

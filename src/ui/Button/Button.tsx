@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGAttributes } from "../../style/icons";
+import { SVGAttributes } from "../../core/constants/ICONS";
 import Icon from "../Icon/Icon";
 
 import styles from "./Button.module.scss";

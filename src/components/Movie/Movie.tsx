@@ -1,4 +1,5 @@
 import React from "react";
+import ContextMenuButton from "../ContextMenuButton/ContextMenuButton";
 
 import styles from "./Movie.module.scss";
 
@@ -8,18 +9,6 @@ export interface MovieProps {
   releaseDate: number;
   imgUrl: string;
 }
-
-const ContextMenuButton = (): JSX.Element => {
-  return (
-    <div className={styles.edit}>
-      <div />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div className={styles.dot} />
-      <div />
-    </div>
-  );
-};
 
 const Movie = ({
   title,
