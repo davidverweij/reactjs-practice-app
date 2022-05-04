@@ -16,3 +16,11 @@
   -webkit-filter: blur(4px);
   z-index: -1;
 }
+
+.hr {
+  background-color: v.$base-light;
+  margin: 0;
+  width: 100%;
+  height: 10px;
+  border: none;
+}

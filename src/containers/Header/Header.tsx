@@ -13,6 +13,7 @@ const Header = ({ children }: HeaderProps): JSX.Element => {
         className={styles["header-img"]}
       />
       <div className={styles.header}>{children}</div>
+      <hr className={styles.hr} />
     </>
   );
 };
