@@ -1,4 +1,4 @@
-const plugins = [];
+const plugins = ["@babel/transform-runtime"];
 
 if (process.env.NODE_ENV !== "production") {
   plugins.push("babel-plugin-typescript-to-proptypes");

@@ -43,4 +43,8 @@ const MOVIES: MovieProps[] = [
   },
 ];
 
-export default MOVIES;
+const getMoviesMocked = async (): Promise<MovieProps[]> => {
+  return Promise.resolve(MOVIES);
+};
+
+export default getMoviesMocked;
