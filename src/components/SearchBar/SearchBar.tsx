@@ -1,4 +1,5 @@
 import React from "react";
+import I18Y from "../../core/i18y";
 import Button from "../../ui/Button/Button";
 import Title from "../Title/Title";
 
@@ -16,16 +17,16 @@ const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
 
   return (
     <div className={`${className} ${styles.search}`}>
-      <Title text="FIND YOUR MOVIE" />
+      <Title text={I18Y("EN").HOME_TITLE} />
       <div className={styles["search-bar"]}>
         <input
           className={styles.bar}
           type="text"
-          placeholder="What do you want to watch?"
+          placeholder={I18Y("EN").SEARCH_PLACEHOLDER}
         />
         <Button
           className={styles.button}
-          text="SEARCH"
+          text={I18Y("EN").SEARCH_BTN}
           onClick={onClickHandler}
         />
       </div>

@@ -5,6 +5,7 @@ import Button from "../../ui/Button/Button";
 
 import styles from "./Menu.module.scss";
 import ICONS from "../../core/constants/ICONS";
+import I18Y from "../../core/i18y";
 
 const Menu = (): JSX.Element => {
   const onClickHandler = (): void => {
@@ -17,7 +18,7 @@ const Menu = (): JSX.Element => {
       <Logo />
       <Button
         className={styles.button}
-        text="ADD MOVIE"
+        text={I18Y("EN").ADD_MOVIE_BTN}
         icon={ICONS.PLUS}
         onClick={onClickHandler}
       />

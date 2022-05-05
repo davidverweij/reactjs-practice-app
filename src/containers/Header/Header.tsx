@@ -1,4 +1,5 @@
 import React from "react";
+import I18Y from "../../core/i18y";
 import styles from "./Header.module.scss";
 
 interface HeaderProps {
@@ -8,10 +9,7 @@ interface HeaderProps {
 const Header = ({ children }: HeaderProps): JSX.Element => {
   return (
     <>
-      <img
-        alt="Blurry backdrop displaying video catalog"
-        className={styles["header-img"]}
-      />
+      <img alt={I18Y("EN").HEADER_IMAGE_ALT} className={styles["header-img"]} />
       <div className={styles.header}>{children}</div>
       <hr className={styles.hr} />
     </>

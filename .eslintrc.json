@@ -28,6 +28,7 @@
       "ignorePackages",
       {
         "js": "never", // as used in Webpack
+        "ts": "never",
         "tsx": "never"
       }
     ],
@@ -39,6 +40,10 @@
         "allowExpressions": true
       }
     ],
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react/function-component-definition": [
       2,
       {

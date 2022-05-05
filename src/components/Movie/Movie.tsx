@@ -1,4 +1,5 @@
 import React from "react";
+import I18Y from "../../core/i18y";
 import ContextMenuButton from "../ContextMenuButton/ContextMenuButton";
 
 import styles from "./Movie.module.scss";
@@ -18,7 +19,7 @@ const Movie = ({
 }: MovieProps): JSX.Element => {
   return (
     <div className={styles.movie}>
-      <img alt={`Movie poster of ${title}`} src={imgUrl} />
+      <img alt={`${I18Y("EN").MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
       <div className={styles.caption}>
         <span>{title}</span>
         <span className={styles.date}>{releaseDate}</span>

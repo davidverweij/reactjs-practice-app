@@ -1,5 +1,6 @@
 import React from "react";
 import Movie, { MovieProps } from "../../components/Movie/Movie";
+import I18Y from "../../core/i18y";
 
 import styles from "./MovieList.module.scss";
 
@@ -29,7 +30,7 @@ const MovieList = ({ movies }: MovieListProps): JSX.Element => {
   return (
     <>
       <div className={styles.stats}>
-        <span className={styles.thick}>39</span> movies found
+        <span className={styles.thick}>39</span> {I18Y("EN").MOVIES_FOUND}
       </div>
       <div className={styles.grid}>{movieList}</div>
     </>

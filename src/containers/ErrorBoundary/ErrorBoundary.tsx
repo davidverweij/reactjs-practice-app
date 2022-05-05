@@ -1,4 +1,5 @@
 import React, { Component, ReactNode, ErrorInfo } from "react";
+import I18Y from "../../core/i18y";
 
 import styles from "./ErrorBoundary.module.scss";
 
@@ -12,9 +13,7 @@ interface ErrorBoundaryState {
 
 const ErrorComponent = (): JSX.Element => {
   return (
-    <div className={styles["error-container"]}>
-      Something went wrong. Please bear with us as we fix the issue.
-    </div>
+    <div className={styles["error-container"]}>{I18Y("EN").ERROR_MSG}</div>
   );
 };
 
