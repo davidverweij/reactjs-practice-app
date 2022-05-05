@@ -6,6 +6,7 @@ import Button from "../../ui/Button/Button";
 import styles from "./Menu.module.scss";
 import ICONS from "../../core/constants/ICONS";
 import I18Y from "../../core/i18y";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 
 const Menu = (): JSX.Element => {
   const onClickHandler = (): void => {
@@ -16,12 +17,16 @@ const Menu = (): JSX.Element => {
   return (
     <div className={styles.menu}>
       <Logo />
-      <Button
-        className={styles.button}
-        text={I18Y("EN").ADD_MOVIE_BTN}
-        icon={ICONS.PLUS}
-        onClick={onClickHandler}
-      />
+      <div className={styles.buttons}>
+        <LanguageToggle />
+
+        <Button
+          className={styles.button}
+          text={I18Y().ADD_MOVIE_BTN}
+          icon={ICONS.PLUS}
+          onClick={onClickHandler}
+        />
+      </div>
       <div className={styles.search}>
         <SearchBar />
       </div>

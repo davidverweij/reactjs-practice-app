@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import I18yStrings from "./I18yStrings";
 
 // Module imports can be done dynamically/lazy in future tasks
 import NL from "./locales/NL";
 import EN from "./locales/EN";
+import LanguageContext from "../contexts/i18y";
 
-type AvailableLanguages = "EN" | "NL";
+const I18Y = (): I18yStrings => {
+  const { languageState } = useContext(LanguageContext);
 
-const I18Y = (language: AvailableLanguages): I18yStrings => {
-  switch (language) {
+  switch (languageState) {
     case "NL":
       return NL;
     default:

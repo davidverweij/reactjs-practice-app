@@ -10,6 +10,8 @@ const EN: I18yStrings = {
   SORT_LABEL: "Sort by",
   ERROR_MSG: "Something went wrong. Please bear with us as we fix the issue",
   MOVIES_FOUND: "movies found",
+  SET_LANGUAGE: "Language",
+  EXIT_BUTTON: "close",
 };
 
 export default EN;

@@ -8,7 +8,12 @@ interface I18yValues {
   SORT_LABEL: string;
   ERROR_MSG: string;
   MOVIES_FOUND: string;
+  SET_LANGUAGE: string;
+  EXIT_BUTTON: string;
 }
+
+export const availableLanguagesObject = ["EN", "NL"] as const;
+export type AvailableLanguages = typeof availableLanguagesObject[number];
 
 type I18yStrings = Record<keyof I18yValues, string>;
 

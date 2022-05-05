@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header = ({ children }: HeaderProps): JSX.Element => {
   return (
     <>
-      <img alt={I18Y("EN").HEADER_IMAGE_ALT} className={styles["header-img"]} />
+      <img alt={I18Y().HEADER_IMAGE_ALT} className={styles["header-img"]} />
       <div className={styles.header}>{children}</div>
       <hr className={styles.hr} />
     </>

@@ -1,0 +1,62 @@
+@use "../../style/variables" as v;
+
+.language-menu {
+  background-color: v.$base-dark;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+
+  .exit {
+    color: v.$white;
+    font-weight: 100;
+    font-size: 36px;
+    line-height: 18px;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+
+    &:hover::after {
+      transform: rotate(90);
+    }
+
+    &::after {
+      display: inline-block;
+      content: "\00d7";
+    }
+  }
+
+  button {
+    @include v.regular;
+    font-size: 16px;
+    color: v.$white;
+    background: v.$base-dark;
+    text-align: left;
+    border: none;
+    padding: 9px 23px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: v.$red;
+    }
+
+    &:first-of-type {
+      margin-top: 25px;
+    }
+    &:last-of-type {
+      margin-bottom: 12px;
+    }
+
+    &:disabled {
+      background-color: v.$base-dark;
+      cursor: auto;
+      color: v.$base-regular;
+    }
+  }
+}

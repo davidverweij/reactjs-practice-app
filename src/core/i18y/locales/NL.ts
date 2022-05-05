@@ -11,6 +11,8 @@ const NL: I18yStrings = {
   ERROR_MSG:
     "Iets ging fout. Even geduld terwijl wij het repareren alstubflieft",
   MOVIES_FOUND: "films gevonden",
+  SET_LANGUAGE: "taal",
+  EXIT_BUTTON: "sluit venster",
 };
 
 export default NL;

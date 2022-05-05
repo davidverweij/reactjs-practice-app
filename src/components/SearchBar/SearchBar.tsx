@@ -17,16 +17,16 @@ const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
 
   return (
     <div className={`${className} ${styles.search}`}>
-      <Title text={I18Y("EN").HOME_TITLE} />
+      <Title text={I18Y().HOME_TITLE} />
       <div className={styles["search-bar"]}>
         <input
           className={styles.bar}
           type="text"
-          placeholder={I18Y("EN").SEARCH_PLACEHOLDER}
+          placeholder={I18Y().SEARCH_PLACEHOLDER}
         />
         <Button
           className={styles.button}
-          text={I18Y("EN").SEARCH_BTN}
+          text={I18Y().SEARCH_BTN}
           onClick={onClickHandler}
         />
       </div>

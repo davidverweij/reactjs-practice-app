@@ -12,9 +12,7 @@ interface ErrorBoundaryState {
 }
 
 const ErrorComponent = (): JSX.Element => {
-  return (
-    <div className={styles["error-container"]}>{I18Y("EN").ERROR_MSG}</div>
-  );
+  return <div className={styles["error-container"]}>{I18Y().ERROR_MSG}</div>;
 };
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

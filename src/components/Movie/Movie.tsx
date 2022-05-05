@@ -19,7 +19,7 @@ const Movie = ({
 }: MovieProps): JSX.Element => {
   return (
     <div className={styles.movie}>
-      <img alt={`${I18Y("EN").MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
+      <img alt={`${I18Y().MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
       <div className={styles.caption}>
         <span>{title}</span>
         <span className={styles.date}>{releaseDate}</span>

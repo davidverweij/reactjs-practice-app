@@ -11,7 +11,7 @@ interface SortBySelectorProps {
 const SortBySelector = ({ sortby }: SortBySelectorProps): JSX.Element => {
   return (
     <div className={styles.sort}>
-      <span className={styles["sort-label"]}>{I18Y("EN").SORT_LABEL}</span>
+      <span className={styles["sort-label"]}>{I18Y().SORT_LABEL}</span>
       <div className={styles["select-wrapper"]}>
         <span className={styles.button}>RELEASE DATE</span>
         <SortByDropdown sortby={sortby} />

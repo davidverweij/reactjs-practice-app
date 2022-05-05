@@ -8,12 +8,17 @@
   height: 100%;
 }
 
+.buttons {
+  align-self: flex-end;
+  display: flex;
+  gap: 20px;
+}
+
 .button {
   @include v.semi-bold;
   font-size: 20px;
   color: v.$red;
   background-color: rgba(v.$base-light, 0.6);
-  align-self: flex-end;
 }
 
 .search {

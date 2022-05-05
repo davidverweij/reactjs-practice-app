@@ -43,8 +43,8 @@ const MOVIES: MovieProps[] = [
   },
 ];
 
-const getMoviesMocked = async (): Promise<MovieProps[]> => {
-  return Promise.resolve(MOVIES);
+const fetchMovies = async (): Promise<MovieProps[]> => {
+  return Promise.resolve(MOVIES); // mocked API for now
 };
 
-export default getMoviesMocked;
+export default fetchMovies;

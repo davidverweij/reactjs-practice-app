@@ -30,7 +30,8 @@ const MovieList = ({ movies }: MovieListProps): JSX.Element => {
   return (
     <>
       <div className={styles.stats}>
-        <span className={styles.thick}>39</span> {I18Y("EN").MOVIES_FOUND}
+        <span className={styles.thick}>{movieList.length}</span>{" "}
+        {I18Y().MOVIES_FOUND}
       </div>
       <div className={styles.grid}>{movieList}</div>
     </>

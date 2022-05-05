@@ -1,6 +1,7 @@
 declare namespace MenuModuleScssNamespace {
   export interface IMenuModuleScss {
     button: string;
+    buttons: string;
     menu: string;
     search: string;
   }
