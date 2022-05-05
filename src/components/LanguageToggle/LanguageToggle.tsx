@@ -7,7 +7,7 @@ import LanguageMenu from "../LanguageMenu/LanguageMenu";
 import styles from "./LanguageToggle.module.scss";
 
 const LanguageToggle = (): JSX.Element => {
-  const [menuState, setMenuState] = useState<boolean>(true);
+  const [menuState, setMenuState] = useState<boolean>(false);
 
   const menuHandler = (): void => {
     setMenuState((prevState) => !prevState);
