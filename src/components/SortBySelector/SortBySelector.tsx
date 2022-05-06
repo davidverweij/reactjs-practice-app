@@ -13,7 +13,7 @@ const SortBySelector = ({ sortby }: SortBySelectorProps): JSX.Element => {
     <div className={styles.sort}>
       <span className={styles["sort-label"]}>{I18Y().SORT_LABEL}</span>
       <div className={styles["select-wrapper"]}>
-        <span className={styles.button}>RELEASE DATE</span>
+        <span className={styles.button}>{sortby[0]}</span>
         <SortByDropdown sortby={sortby} />
       </div>
     </div>

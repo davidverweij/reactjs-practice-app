@@ -1,14 +1,17 @@
 import React from "react";
 import GenreSelector from "../../components/GenreSelector/GenreSelector";
 import SortBySelector from "../../components/SortBySelector/SortBySelector";
-import GENRES from "../../core/constants/GENRES";
-import SORTOPTIONS from "../../core/constants/SORTOPTIONS";
+import CONSTANTS from "../../core/constants";
 
 import styles from "./FilterBar.module.scss";
 
 const FilterBar = (): JSX.Element => {
-  const genresUpper = GENRES.map((g) => g.toUpperCase());
-  const sortUpper = SORTOPTIONS.map((s) => s.toUpperCase());
+  const genresUpper = Object.values(CONSTANTS().GENRES).map((g) =>
+    g.toUpperCase()
+  );
+  const sortUpper = Object.values(CONSTANTS().SORTOPTIONS).map((s) =>
+    s.toUpperCase()
+  );
 
   return (
     <div className={styles.selector}>

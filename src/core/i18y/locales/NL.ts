@@ -1,3 +1,4 @@
+import I18yConstants from "../../constants/I18yConstants";
 import I18yStrings from "../I18yStrings";
 
 const NL: I18yStrings = {
@@ -13,6 +14,30 @@ const NL: I18yStrings = {
   MOVIES_FOUND: "films gevonden",
   SET_LANGUAGE: "taal",
   EXIT_BUTTON: "sluit venster",
+};
+
+const genres = {
+  ALL: "Alles",
+  DOCUMENTARY: "Documentaire",
+  COMEDY: "Comedie",
+  HORROR: "Horror",
+  CRIME: "Misdaad",
+  DRAMA: "Drama",
+  BIOGRAPHY: "Biografie",
+  MUSIC: "Muziek",
+  OSCAR: "Oscar",
+};
+
+const sortoptions = {
+  RELEASE_DATE: "Publicatiedatum",
+  RATING: "Beoordeling",
+  RUNTIME: "Duratie",
+  TITLE: "Titel",
+};
+
+export const CONSTANTS: I18yConstants = {
+  GENRES: genres,
+  SORTOPTIONS: sortoptions,
 };
 
 export default NL;

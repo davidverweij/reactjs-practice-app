@@ -1,4 +1,4 @@
-interface I18yValues {
+interface I18yStrings {
   HEADER_IMAGE_ALT: string;
   MOVIE_POSTER_ALT: string;
   ADD_MOVIE_BTN: string;
@@ -15,6 +15,6 @@ interface I18yValues {
 export const availableLanguagesObject = ["EN", "NL"] as const;
 export type AvailableLanguages = typeof availableLanguagesObject[number];
 
-type I18yStrings = Record<keyof I18yValues, string>;
+// type I18yStrings = Record<keyof I18yValues, string>;
 
 export default I18yStrings;
