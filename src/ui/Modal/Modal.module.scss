@@ -1,0 +1,31 @@
+@use "../../style/variables" as v;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  background: rgba(v.$base-dark, 0.8);
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  z-index: 100;
+  overflow: hidden;
+  background: v.$base-dark;
+  padding: 57px;
+  color: v.$white;
+
+  .title {
+    margin: 6px 0;
+    padding-bottom: 38px;
+  }
+  .exit {
+    @include v.exit;
+  }
+}
