@@ -13,6 +13,8 @@ const EN: I18yStrings = {
   MOVIES_FOUND: "movies found",
   SET_LANGUAGE: "Language",
   EXIT_BUTTON: "close",
+  EDIT_BUTTON: "edit",
+  DELETE_BUTTON: "delete",
 };
 
 const genres = {

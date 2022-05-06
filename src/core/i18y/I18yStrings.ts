@@ -10,6 +10,8 @@ interface I18yStrings {
   MOVIES_FOUND: string;
   SET_LANGUAGE: string;
   EXIT_BUTTON: string;
+  EDIT_BUTTON: string;
+  DELETE_BUTTON: string;
 }
 
 export const availableLanguagesObject = ["EN", "NL"] as const;

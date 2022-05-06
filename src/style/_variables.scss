@@ -31,3 +31,9 @@ $side-padding: 60px;
 @mixin bold {
   font-weight: 900;
 }
+
+/* Media Sizes */
+
+$media-max: 1260px;
+$media-mid: 960px;
+$media-min: 480px;

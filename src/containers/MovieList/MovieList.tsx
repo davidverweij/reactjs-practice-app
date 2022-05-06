@@ -9,6 +9,7 @@ interface MovieListProps {
 }
 
 const movieListMapper = ({
+  id,
   title,
   genre,
   releaseDate,
@@ -16,7 +17,8 @@ const movieListMapper = ({
 }: MovieProps): JSX.Element => {
   return (
     <Movie
-      key={title}
+      key={id}
+      id={id}
       title={title}
       genre={genre}
       releaseDate={releaseDate}
