@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ICONS from "../../core/constants/ICONS";
-import I18Y from "../../core/i18y";
+import LanguageContext from "../../core/contexts/i18y";
 import Button from "../../ui/Button/Button";
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
 
 import styles from "./LanguageToggle.module.scss";
 
 const LanguageToggle = (): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
+
   const [menuState, setMenuState] = useState<boolean>(false);
 
   const menuHandler = (): void => {
@@ -17,7 +19,7 @@ const LanguageToggle = (): JSX.Element => {
     <div className={styles.wrapper}>
       <Button
         className={styles.toggle}
-        text={I18Y().SET_LANGUAGE}
+        text={dict.SET_LANGUAGE}
         icon={ICONS.TRANSLATE}
         onClick={menuHandler}
       />

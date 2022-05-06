@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Logo from "../Logo/Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../ui/Button/Button";
 
 import styles from "./Menu.module.scss";
 import ICONS from "../../core/constants/ICONS";
-import I18Y from "../../core/i18y";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
+import MovieForm from "../MovieForm/MovieForm";
+import Modal from "../../ui/Modal/Modal";
+import LanguageContext from "../../core/contexts/i18y";
 
 const Menu = (): JSX.Element => {
-  const onClickHandler = (): void => {
-    // eslint-disable-next-line no-console
-    console.warn("Not (yet) implemented");
-  };
+  const { dict } = useContext(LanguageContext);
+
+  const [menuState, setMenuState] = useState<boolean>(false);
 
   return (
     <div className={styles.menu}>
       <Logo />
       <div className={styles.buttons}>
+        {menuState && (
+          <Modal
+            header={dict.ADD_MOVIE_HEADER}
+            onDismiss={() => {
+              setMenuState(false);
+            }}
+          >
+            <MovieForm />
+          </Modal>
+        )}
+
         <LanguageToggle />
 
         <Button
           className={styles.button}
-          text={I18Y().ADD_MOVIE_BTN}
+          text={dict.ADD_MOVIE_BTN}
           icon={ICONS.PLUS}
-          onClick={onClickHandler}
+          onClick={() => setMenuState(true)}
         />
       </div>
       <div className={styles.search}>

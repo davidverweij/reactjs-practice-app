@@ -12,6 +12,10 @@ interface I18yStrings {
   EXIT_BUTTON: string;
   EDIT_BUTTON: string;
   DELETE_BUTTON: string;
+  ADD_MOVIE_HEADER: string;
+  FORM_TITLE: string;
+  FORM_URL: string;
+  FORM_OVERVIEW: string;
 }
 
 export const availableLanguagesObject = ["EN", "NL"] as const;

@@ -16,6 +16,10 @@ const NL: I18yStrings = {
   EXIT_BUTTON: "sluit venster",
   EDIT_BUTTON: "wijzig",
   DELETE_BUTTON: "verwijder",
+  ADD_MOVIE_HEADER: "Voeg film toe",
+  FORM_TITLE: "Titel",
+  FORM_URL: "Link naar film",
+  FORM_OVERVIEW: "Samenvatting",
 };
 
 const genres = {

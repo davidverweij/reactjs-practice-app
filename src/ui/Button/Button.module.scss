@@ -1,8 +1,14 @@
+@use "../../style/variables" as v;
+
 .button {
+  @include v.regular;
   border: none;
   padding: 11px 18px;
   border-radius: 4px;
   cursor: pointer;
+  background: v.$red;
+  color: v.$white;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

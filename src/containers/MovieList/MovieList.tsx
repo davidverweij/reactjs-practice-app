@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import Movie, { MovieProps } from "../../components/Movie/Movie";
-import I18Y from "../../core/i18y";
+import LanguageContext from "../../core/contexts/i18y";
 
 import styles from "./MovieList.module.scss";
 
@@ -28,12 +28,14 @@ const movieListMapper = ({
 };
 
 const MovieList = ({ movies }: MovieListProps): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
   const movieList = movies.map(movieListMapper);
+
   return (
     <>
       <div className={styles.stats}>
         <span className={styles.thick}>{movieList.length}</span>{" "}
-        {I18Y().MOVIES_FOUND}
+        {dict.MOVIES_FOUND}
       </div>
       <div className={styles.grid}>{movieList}</div>
     </>

@@ -1,35 +1,74 @@
-import React, { Dispatch, SetStateAction, ReactNode, useState } from "react";
+import React, { Dispatch, ReactNode, useReducer } from "react";
 
-import { AvailableLanguages } from "../i18y/I18yStrings";
+import I18yStrings, { AvailableLanguages } from "../i18y/I18yStrings";
+import I18Y from "../i18y";
+import I18yConstants from "../constants/I18yConstants";
+import CONSTANTS from "../constants";
 
-interface LanguageContextValue {
-  languageState: AvailableLanguages;
-  setLanguageState: Dispatch<SetStateAction<AvailableLanguages>>;
+export enum ContextActionType {
+  "CHANGE_LANGUAGE",
 }
 
-const defaultLanguageContext: LanguageContextValue = {
-  languageState: "EN",
-  setLanguageState: (): AvailableLanguages => "EN",
-};
+interface ContextAction {
+  type: ContextActionType;
+  payload: AvailableLanguages;
+}
 
-const LanguageContext = React.createContext<LanguageContextValue | null>(null);
+interface LanguageState {
+  lang: AvailableLanguages;
+  dict: I18yStrings;
+  constants: I18yConstants;
+  setLanguageState: Dispatch<ContextAction>;
+}
 
 interface LanguageContextProviderProps {
   children?: ReactNode;
 }
 
+const defaultLanguageContext: LanguageState = {
+  lang: "EN",
+  dict: I18Y("EN"),
+  constants: CONSTANTS("EN"),
+  setLanguageState: () => {},
+};
+
+const LanguageContext = React.createContext<LanguageState | null>(null);
+
+const cartReducer = (
+  state: LanguageState,
+  action: ContextAction
+): LanguageState => {
+  const { type, payload } = action;
+  switch (type) {
+    case ContextActionType.CHANGE_LANGUAGE:
+      return {
+        ...state,
+        lang: payload,
+        dict: I18Y(payload),
+        constants: CONSTANTS(payload),
+      };
+    default:
+      return state;
+  }
+};
+
 export const LanguageContextProvider = ({
   children,
 }: LanguageContextProviderProps): JSX.Element => {
-  const [languageState, setLanguageState] = useState<AvailableLanguages>(
-    defaultLanguageContext.languageState
+  const [languageState, setLanguageState] = useReducer(
+    cartReducer,
+    defaultLanguageContext
   );
+
+  const { lang, constants, dict } = languageState;
 
   return (
     <LanguageContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
-        languageState,
+        lang,
+        dict,
+        constants,
         setLanguageState,
       }}
     >

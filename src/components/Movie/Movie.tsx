@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import I18Y from "../../core/i18y";
+import React, { useContext, useState } from "react";
+import LanguageContext from "../../core/contexts/i18y";
 import ContextMenu from "../ContextMenu/ContextMenu";
 
 import styles from "./Movie.module.scss";
@@ -19,6 +19,8 @@ const Movie = ({
   releaseDate,
   imgUrl,
 }: MovieProps): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
+
   const [menuState, setMenuState] = useState<boolean>(false);
 
   const onEditHandler = (): void => {
@@ -41,7 +43,7 @@ const Movie = ({
       }}
       className={styles.movie}
     >
-      <img alt={`${I18Y().MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
+      <img alt={`${dict.MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
       <div className={styles.caption}>
         <span>{title}</span>
         <span className={styles.date}>{releaseDate}</span>

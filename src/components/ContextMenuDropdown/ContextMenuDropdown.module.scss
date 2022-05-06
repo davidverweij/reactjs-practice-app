@@ -13,23 +13,10 @@
   border-radius: 4px;
 
   .exit {
-    font-weight: 100;
-    font-size: 36px;
-    line-height: 18px;
-    position: absolute;
+    @include v.exit;
+    font-size: 40px;
+    line-height: 20px;
     padding: 5px;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-
-    &:hover::after {
-      transform: rotate(90);
-    }
-
-    &::after {
-      display: inline-block;
-      content: "\00d7";
-    }
   }
 
   button {

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import GenreSelector from "../../components/GenreSelector/GenreSelector";
 import SortBySelector from "../../components/SortBySelector/SortBySelector";
-import CONSTANTS from "../../core/constants";
+import LanguageContext from "../../core/contexts/i18y";
 
 import styles from "./FilterBar.module.scss";
 
 const FilterBar = (): JSX.Element => {
-  const genresUpper = Object.values(CONSTANTS().GENRES).map((g) =>
+  const { constants } = useContext(LanguageContext);
+
+  const genresUpper = Object.values(constants.GENRES).map((g) =>
     g.toUpperCase()
   );
-  const sortUpper = Object.values(CONSTANTS().SORTOPTIONS).map((s) =>
+  const sortUpper = Object.values(constants.SORTOPTIONS).map((s) =>
     s.toUpperCase()
   );
 

@@ -15,6 +15,10 @@ const EN: I18yStrings = {
   EXIT_BUTTON: "close",
   EDIT_BUTTON: "edit",
   DELETE_BUTTON: "delete",
+  ADD_MOVIE_HEADER: "Add movie",
+  FORM_TITLE: "Title",
+  FORM_URL: "Movie url",
+  FORM_OVERVIEW: "Overview",
 };
 
 const genres = {

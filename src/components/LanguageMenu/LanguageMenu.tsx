@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import LanguageContext from "../../core/contexts/i18y";
+import LanguageContext, { ContextActionType } from "../../core/contexts/i18y";
 
 import styles from "./LanguageMenu.module.scss";
 
@@ -7,7 +7,6 @@ import {
   AvailableLanguages,
   availableLanguagesObject,
 } from "../../core/i18y/I18yStrings";
-import I18Y from "../../core/i18y";
 
 interface LanguageMenuProps {
   onExit: () => void;
@@ -19,6 +18,7 @@ const languageMapper = (
 ): JSX.Element[] => {
   const buttons = languages.map((lang) => (
     <button
+      key={lang}
       disabled={languageState === lang}
       type="button"
       onClick={() => onSelect(lang)}
@@ -30,17 +30,20 @@ const languageMapper = (
 };
 
 const LanguageMenu = ({ onExit }: LanguageMenuProps): JSX.Element => {
-  const { languageState, setLanguageState } = useContext(LanguageContext);
+  const { lang, dict, setLanguageState } = useContext(LanguageContext);
 
   const selectHandler = (language: AvailableLanguages): void => {
-    setLanguageState(language);
+    setLanguageState({
+      type: ContextActionType.CHANGE_LANGUAGE,
+      payload: language,
+    });
     onExit();
   };
 
   const languageList = languageMapper(
     availableLanguagesObject,
     selectHandler,
-    languageState
+    lang
   );
 
   return (
@@ -51,7 +54,7 @@ const LanguageMenu = ({ onExit }: LanguageMenuProps): JSX.Element => {
         onClick={onExit}
         onKeyDown={onExit}
         className={styles.exit}
-        aria-label={I18Y().EXIT_BUTTON}
+        aria-label={dict.EXIT_BUTTON}
       />
       {languageList}
     </div>

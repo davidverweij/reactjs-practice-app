@@ -1,5 +1,5 @@
-import React from "react";
-import I18Y from "../../core/i18y";
+import React, { useContext } from "react";
+import LanguageContext from "../../core/contexts/i18y";
 
 import styles from "./ContextMenuDropdown.module.scss";
 
@@ -14,6 +14,8 @@ const ContextMenuDropdown = ({
   onEdit,
   onDelete,
 }: ContextMenuDropdownProps): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
+
   return (
     <div className={styles.dropdown}>
       <span
@@ -22,13 +24,13 @@ const ContextMenuDropdown = ({
         onClick={onExit}
         onKeyDown={onExit}
         className={styles.exit}
-        aria-label={I18Y().EXIT_BUTTON}
+        aria-label={dict.EXIT_BUTTON}
       />
       <button type="button" onClick={onEdit}>
-        {I18Y().EDIT_BUTTON}
+        {dict.EDIT_BUTTON}
       </button>
       <button type="button" onClick={onDelete}>
-        {I18Y().DELETE_BUTTON}
+        {dict.DELETE_BUTTON}
       </button>
     </div>
   );
