@@ -1,0 +1,9 @@
+@use "../../style/variables" as v;
+
+.footer {
+  background-color: v.$base-regular;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

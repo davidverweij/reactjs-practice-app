@@ -1,0 +1,17 @@
+@use "../../style/variables" as v;
+
+.genres {
+  display: flex;
+
+  .selected {
+    text-decoration: underline 3px v.$red;
+    text-underline-offset: 21px;
+  }
+
+  div {
+    padding: 0 30px 0 0;
+    span {
+      cursor: pointer;
+    }
+  }
+}

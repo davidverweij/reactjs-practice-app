@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -19,6 +20,34 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.s?[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "@teamsupercell/typings-for-css-modules-loader",
+            options: {
+              disableLocalsExport: true,
+            },
+          },
+          {
+            loader: "css-loader",
+            options: { modules: true },
+          },
+          "postcss-loader",
+          "resolve-url-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true, // required for resolve-url-loader
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {
@@ -29,5 +58,6 @@ module.exports = {
       template: "./src/index.html",
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };

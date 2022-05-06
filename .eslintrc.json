@@ -20,11 +20,15 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
+    "react/state-in-constructor": [1, "never"],
     "import/extensions": [
       "error",
       "ignorePackages",
       {
         "js": "never", // as used in Webpack
+        "ts": "never",
         "tsx": "never"
       }
     ],
@@ -36,6 +40,10 @@
         "allowExpressions": true
       }
     ],
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react/function-component-definition": [
       2,
       {

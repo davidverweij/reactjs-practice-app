@@ -1,0 +1,18 @@
+@use "../../style/variables" as v;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.stats {
+  padding: 25px 0;
+  color: v.$white;
+  font-size: 20px;
+  @include v.regular;
+
+  .thick {
+    @include v.semi-bold;
+  }
+}

@@ -1,0 +1,8 @@
+@use "../../style/variables" as v;
+
+.title {
+  @include v.light;
+  font-size: 40px;
+  color: v.$white;
+  text-transform: uppercase;
+}

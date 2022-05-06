@@ -1,0 +1,12 @@
+@use "../../style/variables" as v;
+
+.toggle {
+  @include v.semi-bold;
+  font-size: 20px;
+  color: v.$grey;
+  background-color: rgba(v.$base-dark, 0.7);
+}
+
+.wrapper {
+  position: relative;
+}
