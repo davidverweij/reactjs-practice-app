@@ -16,6 +16,15 @@ interface I18yStrings {
   FORM_TITLE: string;
   FORM_URL: string;
   FORM_OVERVIEW: string;
+  FORM_OVERVIEW_PLACEHOLDER: string;
+  FORM_RUNTIME_PLACEHOLDER: string;
+  GENRE: string;
+  FORM_TITLE_VALIDATION: string;
+  FORM_URL_VALIDATION: string;
+  FORM_DATE_VALIDATION: string;
+  FORM_RUNTIME_VALIDATION: string;
+  FORM_RATING_VALIDATION: string;
+  FORM_OVERVIEW_VALIDATION: string;
 }
 
 export const availableLanguagesObject = ["EN", "NL"] as const;

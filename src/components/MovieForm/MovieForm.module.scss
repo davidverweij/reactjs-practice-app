@@ -12,7 +12,7 @@
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 5px;
 
     input,
     textarea {
@@ -24,6 +24,7 @@
       border: none;
       border-radius: 4px;
       padding: 0px 25px;
+      margin-top: 8px;
 
       @include v.regular;
       font-size: 20px;
@@ -38,6 +39,12 @@
       padding-top: 20px;
       resize: none;
       height: 200px;
+    }
+
+    span {
+      @include v.regular;
+      font-size: 17px;
+      text-transform: initial;
     }
 
     &:last-child {

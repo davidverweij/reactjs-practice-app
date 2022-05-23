@@ -19,6 +19,16 @@ const EN: I18yStrings = {
   FORM_TITLE: "Title",
   FORM_URL: "Movie url",
   FORM_OVERVIEW: "Overview",
+  FORM_OVERVIEW_PLACEHOLDER: "Movie description",
+  FORM_RUNTIME_PLACEHOLDER: "Minutes",
+  GENRE: "Genre",
+  FORM_TITLE_VALIDATION: "Please provide a title",
+  FORM_URL_VALIDATION: "Provide a valid URL",
+  FORM_DATE_VALIDATION: "Enter a valid date",
+  FORM_RUNTIME_VALIDATION: "Enter a positive whole number without decimals",
+  FORM_RATING_VALIDATION:
+    "Enter a number between 0.1 and 10 (optionally with one decimal)",
+  FORM_OVERVIEW_VALIDATION: "Please provide a brief summary of the movie",
 };
 
 const genres = {
