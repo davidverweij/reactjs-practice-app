@@ -9,7 +9,7 @@ export enum FormActionType {
   "UPDATE_RATING",
   "UPDATE_RUNTIME",
   "RESET_FORM",
-  "SUBMIT_FORM",
+  "SHOW_HINTS",
 }
 
 export interface FormAction {

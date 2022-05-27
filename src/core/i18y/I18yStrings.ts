@@ -12,7 +12,10 @@ interface I18yStrings {
   EXIT_BUTTON: string;
   EDIT_BUTTON: string;
   DELETE_BUTTON: string;
-  ADD_MOVIE_HEADER: string;
+  FORM_HEADER_ADD: string;
+  FORM_HEADER_DELETE: string;
+  FORM_HEADER_EDIT: string;
+  FORM_HEADER_SUCCESS: string;
   FORM_TITLE: string;
   FORM_URL: string;
   FORM_OVERVIEW: string;

@@ -11,18 +11,26 @@ interface MovieListProps {
 const movieListMapper = ({
   id,
   title,
-  genre,
+  genres,
   releaseDate,
   imgUrl,
+  overview,
+  rating,
+  runtime,
+  url,
 }: MovieProps): JSX.Element => {
   return (
     <Movie
       key={id}
       id={id}
       title={title}
-      genre={genre}
+      genres={genres}
       releaseDate={releaseDate}
       imgUrl={imgUrl}
+      rating={rating}
+      overview={overview}
+      runtime={runtime}
+      url={url}
     />
   );
 };

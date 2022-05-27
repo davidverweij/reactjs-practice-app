@@ -1,4 +1,4 @@
-interface I18yGenres {
+export interface I18yGenres {
   ALL: string;
   DOCUMENTARY: string;
   COMEDY: string;
