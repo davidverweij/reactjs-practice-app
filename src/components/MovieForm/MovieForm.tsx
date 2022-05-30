@@ -1,4 +1,5 @@
 import React, { useContext, useState, useReducer } from "react";
+import { MovieProps } from "../../core/api";
 import LanguageContext from "../../core/contexts/i18y";
 import {
   urlValidator,
@@ -10,6 +11,7 @@ import Modal from "../../ui/Modal/Modal";
 import MovieFormInput, {
   FormAction,
   FormActionType,
+  MovieFormTextArea,
 } from "../MovieFormInput/MovieFormInput";
 
 import styles from "./MovieForm.module.scss";
@@ -36,6 +38,7 @@ interface StateProps {
 interface FormProps extends StateProps {
   formTitle: string;
   closeFormHandler: () => void;
+  onSubmitHandler: (movie: MovieProps) => void;
 }
 
 interface FormState {
@@ -180,6 +183,7 @@ const MovieForm = ({
   runtime,
   closeFormHandler,
   formTitle,
+  onSubmitHandler,
 }: FormProps): JSX.Element => {
   const { dict, constants } = useContext(LanguageContext);
 
@@ -213,7 +217,7 @@ const MovieForm = ({
     setShowGenreState((prev) => !prev);
   };
 
-  const handleOnSubmit = (): void => {
+  const handleOnSubmit = async (): Promise<void> => {
     const states = [
       titleState,
       urlState,
@@ -234,7 +238,18 @@ const MovieForm = ({
         payload: null,
       });
     }
-    return closeFormHandler();
+
+    return onSubmitHandler({
+      id,
+      title: titleState.value,
+      url: urlState.value,
+      imgUrl: urlState.value,
+      genres: genreState.value,
+      overview: overviewState.value,
+      releasedate: dateState.value,
+      rating: parseFloat(ratingState.value),
+      runtime: parseFloat(runtimeState.value),
+    });
   };
 
   return (
@@ -253,7 +268,7 @@ const MovieForm = ({
             validationMessage={dict.FORM_TITLE_VALIDATION}
           />
           <MovieFormInput
-            title={constants.SORTOPTIONS.RELEASE_DATE}
+            title={constants.SORTOPTIONS.releasedate}
             id="releaseDate"
             type="date"
             value={dateState.value}
@@ -275,7 +290,7 @@ const MovieForm = ({
             validationMessage={dict.FORM_URL_VALIDATION}
           />
           <MovieFormInput
-            title={constants.SORTOPTIONS.RATING}
+            title={constants.SORTOPTIONS.rating}
             id="rating"
             type="text"
             value={ratingState.value}
@@ -298,7 +313,7 @@ const MovieForm = ({
           </label>
           {showGenreState}
           <MovieFormInput
-            title={constants.SORTOPTIONS.RUNTIME}
+            title={constants.SORTOPTIONS.runtime}
             id="runtime"
             type="text"
             value={runtimeState.value}
@@ -308,10 +323,9 @@ const MovieForm = ({
             showValidation={showHintsState && !runtimeState.isValid}
             validationMessage={dict.FORM_RUNTIME_VALIDATION}
           />
-          <MovieFormInput
+          <MovieFormTextArea
             title={dict.FORM_OVERVIEW}
             id="overview"
-            type="textarea"
             value={overviewState.value}
             dispatch={dispatchForm}
             placeholder={dict.FORM_OVERVIEW_PLACEHOLDER}

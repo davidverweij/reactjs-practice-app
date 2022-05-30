@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Logo from "../Logo/Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../../ui/Button/Button";
@@ -8,20 +9,25 @@ import ICONS from "../../core/constants/ICONS";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import LanguageContext from "../../core/contexts/i18y";
 import MovieForm from "../MovieForm/MovieForm";
+import { MovieProps, putMovie } from "../../core/api";
+import Modal from "../../ui/Modal/Modal";
 
 const Menu = (): JSX.Element => {
   const { dict } = useContext(LanguageContext);
   const [showEditor, setShowEditor] = useState<boolean>(false);
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
 
-  const addMovieHandler = (): void => {
-    setShowEditor((prev) => !prev);
+  const submitMovieHandler = async (movie: MovieProps): Promise<void> => {
+    await putMovie(movie);
+    setShowEditor(false);
+    return setShowSuccessModal(true);
   };
 
   return (
     <>
       {showEditor && (
         <MovieForm
-          id=""
+          id={uuidv4()}
           title=""
           url=""
           genres={[]}
@@ -29,9 +35,18 @@ const Menu = (): JSX.Element => {
           date=""
           rating=""
           runtime=""
-          closeFormHandler={addMovieHandler}
+          closeFormHandler={() => setShowEditor(false)}
           formTitle={dict.FORM_HEADER_ADD}
+          onSubmitHandler={submitMovieHandler}
         />
+      )}
+      {showSuccessModal && (
+        <Modal
+          header="CONGRATULATIONS!"
+          onDismiss={() => setShowSuccessModal(false)}
+        >
+          <span>The movie has been added to database successfully </span>
+        </Modal>
       )}
       <div className={styles.menu}>
         <Logo />
@@ -41,7 +56,7 @@ const Menu = (): JSX.Element => {
             className={styles.button}
             text={dict.ADD_MOVIE_BTN}
             icon={ICONS.PLUS}
-            onClick={addMovieHandler}
+            onClick={() => setShowEditor(true)}
           />
         </div>
         <div className={styles.search}>

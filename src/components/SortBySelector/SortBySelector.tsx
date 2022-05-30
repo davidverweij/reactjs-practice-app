@@ -1,22 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { I18ySortoptions } from "../../core/constants/I18yConstants";
 import LanguageContext from "../../core/contexts/i18y";
 import SortByDropdown from "../SortByDropdown/SortByDropdown";
 
 import styles from "./SortBySelector.module.scss";
 
 interface SortBySelectorProps {
-  sortby: string[];
+  sortby: I18ySortoptions;
+  handler: (s: string) => void;
+  state: string;
 }
 
-const SortBySelector = ({ sortby }: SortBySelectorProps): JSX.Element => {
+const SortBySelector = ({
+  sortby,
+  handler,
+  state,
+}: SortBySelectorProps): JSX.Element => {
   const { dict } = useContext(LanguageContext);
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
+  const dropdownHandler = (): void => {
+    setShowDropdown((prev) => !prev);
+  };
+
+  const selectSortHandler = (selection: string): void => {
+    handler(selection);
+    setShowDropdown((prev) => !prev);
+  };
 
   return (
     <div className={styles.sort}>
       <span className={styles["sort-label"]}>{dict.SORT_LABEL}</span>
       <div className={styles["select-wrapper"]}>
-        <span className={styles.button}>{sortby[0]}</span>
-        <SortByDropdown sortby={sortby} />
+        <button
+          className={styles.button}
+          onClick={dropdownHandler}
+          type="button"
+        >
+          {sortby[state as keyof I18ySortoptions]}
+        </button>
+        {showDropdown && (
+          <SortByDropdown selectHandler={selectSortHandler} sortby={sortby} />
+        )}
       </div>
     </div>
   );

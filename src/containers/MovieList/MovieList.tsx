@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import Movie, { MovieProps } from "../../components/Movie/Movie";
+import Movie from "../../components/Movie/Movie";
+import { MovieProps } from "../../core/api";
 import LanguageContext from "../../core/contexts/i18y";
 
 import styles from "./MovieList.module.scss";
@@ -12,7 +13,7 @@ const movieListMapper = ({
   id,
   title,
   genres,
-  releaseDate,
+  releasedate,
   imgUrl,
   overview,
   rating,
@@ -25,7 +26,7 @@ const movieListMapper = ({
       id={id}
       title={title}
       genres={genres}
-      releaseDate={releaseDate}
+      releasedate={releasedate}
       imgUrl={imgUrl}
       rating={rating}
       overview={overview}

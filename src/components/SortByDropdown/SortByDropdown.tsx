@@ -1,25 +1,32 @@
 import React from "react";
+import { I18ySortoptions } from "../../core/constants/I18yConstants";
 
 import styles from "./SortByDropdown.module.scss";
 
 interface SortByDropdownProps {
-  sortby: string[];
+  sortby: I18ySortoptions;
+  selectHandler: (select: string) => void;
 }
 
-const sortByMapper = (sort: string): JSX.Element => {
-  return (
-    <button type="button" onClick={() => {}} value={sort} key={sort}>
-      {sort}
+const sortByMapper = ({
+  sortby,
+  selectHandler,
+}: SortByDropdownProps): JSX.Element[] => {
+  const mapping = Object.entries(sortby).map(([key, value]) => (
+    <button type="button" onClick={() => selectHandler(key)} key={key}>
+      {value}
     </button>
-  );
+  ));
+  return mapping;
 };
 
-const SortByDropdown = ({ sortby }: SortByDropdownProps): JSX.Element => {
-  const sortbyList = sortby.map(sortByMapper);
+const SortByDropdown = ({
+  sortby,
+  selectHandler,
+}: SortByDropdownProps): JSX.Element => {
+  const sortbyList = sortByMapper({ sortby, selectHandler });
 
-  return (
-    <div className={`${styles.dropdown} ${styles.hide}`}>{sortbyList}</div>
-  );
+  return <div className={styles.dropdown}>{sortbyList}</div>;
 };
 
 export default SortByDropdown;

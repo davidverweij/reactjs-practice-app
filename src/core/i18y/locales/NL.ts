@@ -36,22 +36,21 @@ const NL: I18yStrings = {
 };
 
 const genres = {
-  ALL: "Alles",
-  DOCUMENTARY: "Documentaire",
-  COMEDY: "Comedie",
-  HORROR: "Horror",
-  CRIME: "Misdaad",
-  DRAMA: "Drama",
-  BIOGRAPHY: "Biografie",
-  MUSIC: "Muziek",
-  OSCAR: "Oscar",
+  all: "Alles",
+  documentary: "Documentaire",
+  drama: "Drama",
+  biography: "Biografie",
+  music: "Muziek",
+  oscar: "Oscar",
+  action: "Actie",
+  adventure: "Avontuur",
 };
 
 const sortoptions = {
-  RELEASE_DATE: "Publicatiedatum",
-  RATING: "Beoordeling",
-  RUNTIME: "Duratie",
-  TITLE: "Titel",
+  releasedate: "Publicatiedatum",
+  rating: "Beoordeling",
+  runtime: "Duratie",
+  title: "Titel",
 };
 
 export const CONSTANTS: I18yConstants = {

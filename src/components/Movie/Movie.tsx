@@ -2,20 +2,9 @@ import React, { useContext, useState } from "react";
 import LanguageContext from "../../core/contexts/i18y";
 import ContextMenu from "../ContextMenu/ContextMenu";
 import MovieForm from "../MovieForm/MovieForm";
+import { MovieProps, putMovie } from "../../core/api";
 
 import styles from "./Movie.module.scss";
-
-export interface MovieProps {
-  id: string;
-  title: string;
-  genres: string[];
-  releaseDate: string;
-  runtime: number;
-  rating: number;
-  url: string;
-  imgUrl: string;
-  overview: string;
-}
 
 const Movie = ({
   id,
@@ -24,7 +13,7 @@ const Movie = ({
   url,
   runtime,
   rating,
-  releaseDate,
+  releasedate,
   imgUrl,
   overview,
 }: MovieProps): JSX.Element => {
@@ -52,11 +41,12 @@ const Movie = ({
           url={url}
           genres={genres}
           overview={overview}
-          date={releaseDate}
+          date={releasedate}
           rating={rating.toString()}
           runtime={runtime.toString()}
           closeFormHandler={onEditHandler}
           formTitle={dict.FORM_HEADER_EDIT}
+          onSubmitHandler={putMovie}
         />
       )}
       <div
@@ -71,7 +61,7 @@ const Movie = ({
         <img alt={`${dict.MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />
         <div className={styles.caption}>
           <span>{title}</span>
-          <span className={styles.date}>{releaseDate}</span>
+          <span className={styles.date}>{releasedate}</span>
         </div>
         <span className={styles.genre}>{genres.join(", ")}</span>
         {menuState && (

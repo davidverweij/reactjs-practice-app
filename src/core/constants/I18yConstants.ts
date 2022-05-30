@@ -1,20 +1,18 @@
 export interface I18yGenres {
-  ALL: string;
-  DOCUMENTARY: string;
-  COMEDY: string;
-  HORROR: string;
-  CRIME: string;
-  DRAMA: string;
-  BIOGRAPHY: string;
-  MUSIC: string;
-  OSCAR: string;
+  all: string;
+  action: string;
+  adventure: string;
+  drama: string;
+  biography: string;
+  music: string;
+  oscar: string;
 }
 
-interface I18ySortoptions {
-  RELEASE_DATE: string;
-  RATING: string;
-  RUNTIME: string;
-  TITLE: string;
+export interface I18ySortoptions {
+  releasedate: string;
+  rating: string;
+  runtime: string;
+  title: string;
 }
 
 interface I18yConstants {

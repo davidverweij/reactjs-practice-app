@@ -1,21 +1,38 @@
 import React from "react";
+import { I18yGenres } from "../../core/constants/I18yConstants";
 
 import styles from "./GenreSelector.module.scss";
 
 interface GenreSelectorProps {
-  genres: string[];
+  genres: I18yGenres;
+  state: string;
+  handler: (g: string) => void;
 }
 
-const genreMapper = (genre: string, index: number): JSX.Element => {
-  return (
-    <div className={index === 0 ? styles.selected : ""} key={genre}>
-      <span>{genre}</span>
-    </div>
-  );
+const genreMapper = ({
+  genres,
+  state,
+  handler,
+}: GenreSelectorProps): JSX.Element[] => {
+  const mapped = Object.entries(genres).map(([key, value]) => (
+    <button
+      type="button"
+      onClick={() => handler(key)}
+      className={key === state ? styles.selected : ""}
+      key={key}
+    >
+      {value}
+    </button>
+  ));
+  return mapped;
 };
 
-const GenreSelector = ({ genres }: GenreSelectorProps): JSX.Element => {
-  const genreList = genres.map(genreMapper);
+const GenreSelector = ({
+  genres,
+  state,
+  handler,
+}: GenreSelectorProps): JSX.Element => {
+  const genreList = genreMapper({ genres, state, handler });
   return <div className={styles.genres}>{genreList}</div>;
 };
 

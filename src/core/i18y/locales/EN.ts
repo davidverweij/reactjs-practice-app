@@ -35,22 +35,22 @@ const EN: I18yStrings = {
 };
 
 const genres = {
-  ALL: "All",
-  DOCUMENTARY: "Documentary",
-  COMEDY: "Comedy",
-  HORROR: "Horror",
-  CRIME: "Crime",
-  DRAMA: "Drama",
-  BIOGRAPHY: "Biography",
-  MUSIC: "Music",
-  OSCAR: "Oscar",
+  all: "All",
+  documentary: "Documentary",
+  comedy: "Comedy",
+  drama: "Drama",
+  biography: "Biography",
+  music: "Music",
+  oscar: "Oscar",
+  action: "Action",
+  adventure: "adventure",
 };
 
 const sortoptions = {
-  RELEASE_DATE: "Release date",
-  RATING: "Rating",
-  RUNTIME: "Runtime",
-  TITLE: "Title",
+  releasedate: "Release date",
+  rating: "Rating",
+  runtime: "Runtime",
+  title: "Title",
 };
 
 export const CONSTANTS: I18yConstants = {
