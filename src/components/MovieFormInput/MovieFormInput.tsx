@@ -17,16 +17,19 @@ export interface FormAction {
   payload: string;
 }
 
-interface MovieFormInputProps {
+interface MovieFormBaseProps {
   title: string;
   placeholder: string;
-  type: string;
   id: string;
   value: string;
   dispatch: Dispatch<FormAction>;
   action: FormActionType;
   showValidation: boolean;
   validationMessage: string;
+}
+
+interface MovieFormInputProps extends MovieFormBaseProps {
+  type: string;
 }
 
 const MovieFormInput = ({
@@ -40,21 +43,9 @@ const MovieFormInput = ({
   showValidation,
   validationMessage,
 }: MovieFormInputProps): JSX.Element => {
-  const input =
-    type === "textarea" ? (
-      <textarea
-        placeholder={placeholder}
-        id={id}
-        name={id}
-        value={value}
-        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-          dispatch({
-            type: action,
-            payload: event.target.value,
-          });
-        }}
-      />
-    ) : (
+  return (
+    <label htmlFor={id}>
+      {title}
       <input
         placeholder={placeholder}
         type={type}
@@ -68,12 +59,36 @@ const MovieFormInput = ({
           });
         }}
       />
-    );
+      {showValidation && <span>{validationMessage}</span>}
+    </label>
+  );
+};
 
+export const MovieFormTextArea = ({
+  title,
+  placeholder,
+  id,
+  value,
+  dispatch,
+  action,
+  showValidation,
+  validationMessage,
+}: MovieFormBaseProps): JSX.Element => {
   return (
-    <label htmlFor="title">
+    <label htmlFor={id}>
       {title}
-      {input}
+      <textarea
+        placeholder={placeholder}
+        id={id}
+        name={id}
+        value={value}
+        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+          dispatch({
+            type: action,
+            payload: event.target.value,
+          });
+        }}
+      />
       {showValidation && <span>{validationMessage}</span>}
     </label>
   );

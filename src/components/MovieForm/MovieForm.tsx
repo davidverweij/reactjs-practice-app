@@ -1,12 +1,12 @@
 import React, { useContext, useState, useReducer } from "react";
 import LanguageContext from "../../core/contexts/i18y";
-import EditorContext from "../../core/contexts/movieEditor";
 import {
   urlValidator,
   movieScoreValidator,
   movieRuntimeValidator,
 } from "../../core/utils/validators";
 import Button from "../../ui/Button/Button";
+import Modal from "../../ui/Modal/Modal";
 import MovieFormInput, {
   FormAction,
   FormActionType,
@@ -33,8 +33,9 @@ interface StateProps {
   runtime: string;
 }
 
-interface FormProps {
-  closeFormHandler: Function;
+interface FormProps extends StateProps {
+  formTitle: string;
+  closeFormHandler: () => void;
 }
 
 interface FormState {
@@ -168,12 +169,19 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
   }
 };
 
-const MovieForm = ({ closeFormHandler }: FormProps): JSX.Element => {
+const MovieForm = ({
+  id,
+  title,
+  url,
+  genres,
+  overview,
+  date,
+  rating,
+  runtime,
+  closeFormHandler,
+  formTitle,
+}: FormProps): JSX.Element => {
   const { dict, constants } = useContext(LanguageContext);
-  const { details } = useContext(EditorContext);
-
-  const { id, title, url, genres, overview, date, rating, runtime } =
-    details.movieDetails;
 
   const initialFormState = createFormState({
     id,
@@ -218,7 +226,7 @@ const MovieForm = ({ closeFormHandler }: FormProps): JSX.Element => {
     const invalidStateIndex = states.findIndex(
       (s: FormStateAttributeBase) => !s.isValid
     );
-    console.log(states);
+
     if (invalidStateIndex !== -1) {
       // found at least one invalid property
       return dispatchForm({
@@ -230,101 +238,103 @@ const MovieForm = ({ closeFormHandler }: FormProps): JSX.Element => {
   };
 
   return (
-    <form>
-      <div className={styles.form}>
-        <MovieFormInput
-          title={dict.FORM_TITLE}
-          id="title"
-          type="text"
-          value={titleState.value}
-          dispatch={dispatchForm}
-          placeholder="Title"
-          action={FormActionType.UPDATE_TITLE}
-          showValidation={showHintsState && !titleState.isValid}
-          validationMessage={dict.FORM_TITLE_VALIDATION}
-        />
-        <MovieFormInput
-          title={constants.SORTOPTIONS.RELEASE_DATE}
-          id="releaseDate"
-          type="date"
-          value={dateState.value}
-          dispatch={dispatchForm}
-          placeholder=""
-          action={FormActionType.UPDATE_DATE}
-          showValidation={showHintsState && !dateState.isValid}
-          validationMessage={dict.FORM_DATE_VALIDATION}
-        />
-        <MovieFormInput
-          title={dict.FORM_URL}
-          id="url"
-          type="text"
-          value={urlState.value}
-          dispatch={dispatchForm}
-          placeholder="https://"
-          action={FormActionType.UPDATE_URL}
-          showValidation={showHintsState && !urlState.isValid}
-          validationMessage={dict.FORM_URL_VALIDATION}
-        />
-        <MovieFormInput
-          title={constants.SORTOPTIONS.RATING}
-          id="rating"
-          type="text"
-          value={ratingState.value}
-          dispatch={dispatchForm}
-          placeholder="7.8"
-          action={FormActionType.UPDATE_RATING}
-          showValidation={showHintsState && !ratingState.isValid}
-          validationMessage={dict.FORM_RATING_VALIDATION}
-        />
-        <label htmlFor="genre">
-          {dict.GENRE + genreState}
-          <input
-            type="button"
-            onClick={genreToggleHandler}
-            id="genre"
-            name="genre"
-            placeholder="Select Genre"
-            value="Select Genre"
+    <Modal header={formTitle} onDismiss={closeFormHandler}>
+      <form>
+        <div className={styles.form}>
+          <MovieFormInput
+            title={dict.FORM_TITLE}
+            id="title"
+            type="text"
+            value={titleState.value}
+            dispatch={dispatchForm}
+            placeholder="Title"
+            action={FormActionType.UPDATE_TITLE}
+            showValidation={showHintsState && !titleState.isValid}
+            validationMessage={dict.FORM_TITLE_VALIDATION}
           />
-        </label>
-        {showGenreState}
-        <MovieFormInput
-          title={constants.SORTOPTIONS.RUNTIME}
-          id="runtime"
-          type="text"
-          value={runtimeState.value}
-          dispatch={dispatchForm}
-          placeholder={dict.FORM_RUNTIME_PLACEHOLDER}
-          action={FormActionType.UPDATE_RUNTIME}
-          showValidation={showHintsState && !runtimeState.isValid}
-          validationMessage={dict.FORM_RUNTIME_VALIDATION}
-        />
-        <MovieFormInput
-          title={dict.FORM_OVERVIEW}
-          id="overview"
-          type="textarea"
-          value={overviewState.value}
-          dispatch={dispatchForm}
-          placeholder={dict.FORM_OVERVIEW_PLACEHOLDER}
-          action={FormActionType.UPDATE_OVERVIEW}
-          showValidation={showHintsState && !overviewState.isValid}
-          validationMessage={dict.FORM_OVERVIEW_VALIDATION}
-        />
-      </div>
-      <div className={styles.control}>
-        <Button
-          className={styles.reset}
-          text="Reset"
-          onClick={() => {
-            dispatchForm({
-              type: FormActionType.RESET_FORM,
-              payload: "",
-            });
-          }}
-        />
-        <Button text="Submit" onClick={handleOnSubmit} />
-      </div>
-    </form>
+          <MovieFormInput
+            title={constants.SORTOPTIONS.RELEASE_DATE}
+            id="releaseDate"
+            type="date"
+            value={dateState.value}
+            dispatch={dispatchForm}
+            placeholder=""
+            action={FormActionType.UPDATE_DATE}
+            showValidation={showHintsState && !dateState.isValid}
+            validationMessage={dict.FORM_DATE_VALIDATION}
+          />
+          <MovieFormInput
+            title={dict.FORM_URL}
+            id="url"
+            type="text"
+            value={urlState.value}
+            dispatch={dispatchForm}
+            placeholder="https://"
+            action={FormActionType.UPDATE_URL}
+            showValidation={showHintsState && !urlState.isValid}
+            validationMessage={dict.FORM_URL_VALIDATION}
+          />
+          <MovieFormInput
+            title={constants.SORTOPTIONS.RATING}
+            id="rating"
+            type="text"
+            value={ratingState.value}
+            dispatch={dispatchForm}
+            placeholder="7.8"
+            action={FormActionType.UPDATE_RATING}
+            showValidation={showHintsState && !ratingState.isValid}
+            validationMessage={dict.FORM_RATING_VALIDATION}
+          />
+          <label htmlFor="genre">
+            {dict.GENRE + genreState}
+            <input
+              type="button"
+              onClick={genreToggleHandler}
+              id="genre"
+              name="genre"
+              placeholder="Select Genre"
+              value="Select Genre"
+            />
+          </label>
+          {showGenreState}
+          <MovieFormInput
+            title={constants.SORTOPTIONS.RUNTIME}
+            id="runtime"
+            type="text"
+            value={runtimeState.value}
+            dispatch={dispatchForm}
+            placeholder={dict.FORM_RUNTIME_PLACEHOLDER}
+            action={FormActionType.UPDATE_RUNTIME}
+            showValidation={showHintsState && !runtimeState.isValid}
+            validationMessage={dict.FORM_RUNTIME_VALIDATION}
+          />
+          <MovieFormInput
+            title={dict.FORM_OVERVIEW}
+            id="overview"
+            type="textarea"
+            value={overviewState.value}
+            dispatch={dispatchForm}
+            placeholder={dict.FORM_OVERVIEW_PLACEHOLDER}
+            action={FormActionType.UPDATE_OVERVIEW}
+            showValidation={showHintsState && !overviewState.isValid}
+            validationMessage={dict.FORM_OVERVIEW_VALIDATION}
+          />
+        </div>
+        <div className={styles.control}>
+          <Button
+            className={styles.reset}
+            text="Reset"
+            onClick={() => {
+              dispatchForm({
+                type: FormActionType.RESET_FORM,
+                payload: "",
+              });
+            }}
+          />
+          <Button text="Submit" onClick={handleOnSubmit} />
+        </div>
+      </form>
+    </Modal>
   );
 };
 
