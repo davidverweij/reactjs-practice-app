@@ -6,6 +6,16 @@
   flex-wrap: wrap;
   gap: 5px 20px;
 
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+
+    font-size: inherit;
+    color: inherit;
+  }
+
   .selected {
     text-decoration: underline 3px v.$red;
     text-underline-offset: 21px;

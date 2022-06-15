@@ -1,12 +1,11 @@
 export const urlValidator = (str: string): boolean => {
-  return !str.trim().match(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$/i"
-  );
+  const match = str
+    .trim()
+    .match(
+      "^((https?|ftp|smtp)://)?(www.)?[a-z0-9]+.[a-z]+(/[a-zA-Z0-9#]+/?)*$"
+    );
+  if (!match) return false;
+  return match.length > 0;
 };
 
 export const movieScoreValidator = (str: string): boolean => {

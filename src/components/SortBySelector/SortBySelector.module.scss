@@ -22,6 +22,15 @@
 }
 
 .button {
+  border: none;
+  background: none;
+  width: 100%;
+  text-transform: uppercase;
+
+  cursor: inherit;
+  font-size: inherit;
+  color: inherit;
+
   display: flex;
   align-items: center;
 
@@ -33,4 +42,7 @@
     background-color: v.$red;
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
+}
+.open::after {
+  transform: rotate(180deg);
 }

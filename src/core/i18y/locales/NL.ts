@@ -25,6 +25,7 @@ const NL: I18yStrings = {
   FORM_OVERVIEW: "Samenvatting",
   FORM_OVERVIEW_PLACEHOLDER: "Film beschrijving",
   FORM_RUNTIME_PLACEHOLDER: "Minuten",
+  FORM_GENRE_PLACEHOLDER: "Selecteer genres",
   GENRE: "Genre",
   FORM_TITLE_VALIDATION: "Vul een titel in",
   FORM_URL_VALIDATION: "Vul een geldige URL in",
@@ -33,6 +34,7 @@ const NL: I18yStrings = {
   FORM_RATING_VALIDATION:
     "Vul een score in tussen 0.1 and 10 (optioneel met 1 decimaal)",
   FORM_OVERVIEW_VALIDATION: "Vul een korte samenvatting in",
+  FORM_GENRE_VALIDATION: "Selecteer ten minste één genre",
 };
 
 const genres = {

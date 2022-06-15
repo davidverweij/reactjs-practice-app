@@ -28,15 +28,13 @@ const SortBySelector = ({
     setShowDropdown((prev) => !prev);
   };
 
+  const buttonStyle = `${styles.button} ${showDropdown && styles.open}`;
+
   return (
     <div className={styles.sort}>
       <span className={styles["sort-label"]}>{dict.SORT_LABEL}</span>
       <div className={styles["select-wrapper"]}>
-        <button
-          className={styles.button}
-          onClick={dropdownHandler}
-          type="button"
-        >
+        <button className={buttonStyle} onClick={dropdownHandler} type="button">
           {sortby[state as keyof I18ySortoptions]}
         </button>
         {showDropdown && (

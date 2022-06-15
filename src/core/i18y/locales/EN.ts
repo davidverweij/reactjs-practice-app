@@ -24,6 +24,7 @@ const EN: I18yStrings = {
   FORM_OVERVIEW: "Overview",
   FORM_OVERVIEW_PLACEHOLDER: "Movie description",
   FORM_RUNTIME_PLACEHOLDER: "Minutes",
+  FORM_GENRE_PLACEHOLDER: "Select Genre",
   GENRE: "Genre",
   FORM_TITLE_VALIDATION: "Please provide a title",
   FORM_URL_VALIDATION: "Provide a valid URL",
@@ -32,6 +33,7 @@ const EN: I18yStrings = {
   FORM_RATING_VALIDATION:
     "Enter a number between 0.1 and 10 (optionally with one decimal)",
   FORM_OVERVIEW_VALIDATION: "Please provide a brief summary of the movie",
+  FORM_GENRE_VALIDATION: "Please select at least one genre",
 };
 
 const genres = {
@@ -43,7 +45,7 @@ const genres = {
   music: "Music",
   oscar: "Oscar",
   action: "Action",
-  adventure: "adventure",
+  adventure: "Adventure",
 };
 
 const sortoptions = {

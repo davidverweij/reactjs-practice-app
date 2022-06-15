@@ -17,6 +17,10 @@ export interface FormAction {
   payload: string;
 }
 
+export interface MultiselectFormAction extends FormAction {
+  checked: boolean;
+}
+
 interface MovieFormBaseProps {
   title: string;
   placeholder: string;

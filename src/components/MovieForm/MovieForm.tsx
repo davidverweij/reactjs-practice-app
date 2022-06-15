@@ -1,4 +1,4 @@
-import React, { useContext, useState, useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { MovieProps } from "../../core/api";
 import LanguageContext from "../../core/contexts/i18y";
 import {
@@ -8,10 +8,12 @@ import {
 } from "../../core/utils/validators";
 import Button from "../../ui/Button/Button";
 import Modal from "../../ui/Modal/Modal";
+import GenreDropdown from "../GenreDropdown/GenreDropdown";
 import MovieFormInput, {
   FormAction,
   FormActionType,
   MovieFormTextArea,
+  MultiselectFormAction,
 } from "../MovieFormInput/MovieFormInput";
 
 import styles from "./MovieForm.module.scss";
@@ -100,7 +102,10 @@ const createFormState = ({
   };
 };
 
-const formReducer = (state: FormState, action: FormAction): FormState => {
+const formReducer = (
+  state: FormState,
+  action: FormAction | MultiselectFormAction
+): FormState => {
   const { type, payload } = action;
   const values = { ...state };
   switch (type) {
@@ -114,14 +119,23 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
         ...values,
         urlState: { value: payload, isValid: formValidators.url(payload) },
       };
-    case FormActionType.UPDATE_GENRE:
+    case FormActionType.UPDATE_GENRE: {
+      const currentState = [...values.genreState.value];
+      const { checked } = action as MultiselectFormAction;
+      const payloadIndex = currentState.indexOf(payload);
+
+      if (checked && payloadIndex < 0) currentState.push(payload);
+      else if (!checked && payloadIndex > -1) {
+        currentState.splice(payloadIndex, 1);
+      }
       return {
         ...values,
         genreState: {
-          value: [payload],
-          isValid: formValidators.genre(payload),
+          value: currentState,
+          isValid: formValidators.genre(currentState),
         },
       };
+    }
     case FormActionType.UPDATE_OVERVIEW:
       return {
         ...values,
@@ -186,6 +200,7 @@ const MovieForm = ({
   onSubmitHandler,
 }: FormProps): JSX.Element => {
   const { dict, constants } = useContext(LanguageContext);
+  const { all, ...possibleGenres } = constants.GENRES;
 
   const initialFormState = createFormState({
     id,
@@ -198,7 +213,6 @@ const MovieForm = ({
     runtime,
   });
 
-  const [showGenreState, setShowGenreState] = useState<boolean>(false);
   const [
     {
       titleState,
@@ -212,10 +226,6 @@ const MovieForm = ({
     },
     dispatchForm,
   ] = useReducer(formReducer, initialFormState);
-
-  const genreToggleHandler = (): void => {
-    setShowGenreState((prev) => !prev);
-  };
 
   const handleOnSubmit = async (): Promise<void> => {
     const states = [
@@ -300,18 +310,17 @@ const MovieForm = ({
             showValidation={showHintsState && !ratingState.isValid}
             validationMessage={dict.FORM_RATING_VALIDATION}
           />
-          <label htmlFor="genre">
-            {dict.GENRE + genreState}
-            <input
-              type="button"
-              onClick={genreToggleHandler}
-              id="genre"
-              name="genre"
-              placeholder="Select Genre"
-              value="Select Genre"
-            />
-          </label>
-          {showGenreState}
+          <GenreDropdown
+            title={dict.GENRE}
+            id="genres"
+            showValidation={showHintsState && !genreState.isValid}
+            validationMessage={dict.FORM_GENRE_VALIDATION}
+            placeholder={dict.FORM_GENRE_PLACEHOLDER}
+            genres={possibleGenres}
+            value={genreState.value}
+            dispatch={dispatchForm}
+            action={FormActionType.UPDATE_GENRE}
+          />
           <MovieFormInput
             title={constants.SORTOPTIONS.runtime}
             id="runtime"
