@@ -15,8 +15,10 @@ const EN: I18yStrings = {
   EXIT_BUTTON: "close",
   EDIT_BUTTON: "edit",
   DELETE_BUTTON: "delete",
+  CONFIRM_BUTTON: "confirm",
   FORM_HEADER_ADD: "Add movie",
   FORM_HEADER_DELETE: "Delete movie",
+  FORM_BODY_DELETE: "Are you sure you want to delete this movie?",
   FORM_HEADER_EDIT: "Edit movie",
   FORM_HEADER_SUCCESS: "Congratulations!",
   FORM_TITLE: "Title",
@@ -34,6 +36,10 @@ const EN: I18yStrings = {
     "Enter a number between 0.1 and 10 (optionally with one decimal)",
   FORM_OVERVIEW_VALIDATION: "Please provide a brief summary of the movie",
   FORM_GENRE_VALIDATION: "Please select at least one genre",
+  FORM_SUCCESS_TITLE: "Congratulations!",
+  FORM_SUCCESS_BODY_ADD: "The movie has been added to database successfully",
+  FORM_SUCCESS_BODY_EDIT:
+    "The movie has been edited in the database successfully",
 };
 
 const genres = {

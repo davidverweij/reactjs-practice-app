@@ -34,11 +34,11 @@ const genreMapper = ({
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           dispatch({
             type: action,
-            payload: event.target.value,
+            payload: key,
             checked: event.target.checked,
           });
         }}
-        checked={value.includes(val)}
+        checked={value.includes(key)}
         value={val}
         key={key}
       />

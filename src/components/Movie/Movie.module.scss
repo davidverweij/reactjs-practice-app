@@ -32,3 +32,13 @@
   opacity: 0.5;
   font-size: 14px;
 }
+
+.delete-modal {
+  position: fixed;
+
+  .delete-button {
+    float: right;
+    margin-top: 25px;
+    padding: 17px 38px;
+  }
+}

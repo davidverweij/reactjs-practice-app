@@ -5,11 +5,12 @@ import styles from "./Icon.module.scss";
 
 interface IconProps {
   icon: SVGAttributes;
+  className?: string;
 }
 
-const Icon = ({ icon }: IconProps): JSX.Element => {
+const Icon = ({ icon, className }: IconProps): JSX.Element => {
   return (
-    <svg className={styles.icon} viewBox={icon.viewbox}>
+    <svg className={`${styles.icon} ${className}`} viewBox={icon.viewbox}>
       <path d={icon.path} />
     </svg>
   );

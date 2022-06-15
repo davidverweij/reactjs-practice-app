@@ -8,6 +8,7 @@ interface ModalProps {
   onDismiss: () => void;
   children: ReactNode;
   header?: string;
+  className?: string;
 }
 
 const Backdrop = (): JSX.Element => {
@@ -18,9 +19,10 @@ const ModalOverlay = ({
   onDismiss,
   children,
   header,
+  className,
 }: ModalProps): JSX.Element => {
   return (
-    <div className={styles.modal}>
+    <div className={`${styles.modal} ${className}`}>
       <button
         aria-label="exit"
         type="button"
@@ -33,12 +35,21 @@ const ModalOverlay = ({
   );
 };
 
-const Modal = ({ header, onDismiss, children }: ModalProps): JSX.Element => {
+const Modal = ({
+  header,
+  onDismiss,
+  children,
+  className,
+}: ModalProps): JSX.Element => {
   return (
     <>
       {createPortal(<Backdrop />, document.getElementById("backdrop"))}
       {createPortal(
-        <ModalOverlay header={header} onDismiss={onDismiss}>
+        <ModalOverlay
+          header={header}
+          onDismiss={onDismiss}
+          className={className}
+        >
           {children}
         </ModalOverlay>,
         document.getElementById("modal")

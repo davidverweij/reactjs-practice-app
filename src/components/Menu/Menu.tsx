@@ -10,7 +10,7 @@ import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import LanguageContext from "../../core/contexts/i18y";
 import MovieForm from "../MovieForm/MovieForm";
 import { MovieProps, putMovie } from "../../core/api";
-import Modal from "../../ui/Modal/Modal";
+import ModalSuccess from "../../ui/ModalSuccess/ModalSuccess";
 
 const Menu = (): JSX.Element => {
   const { dict } = useContext(LanguageContext);
@@ -41,12 +41,11 @@ const Menu = (): JSX.Element => {
         />
       )}
       {showSuccessModal && (
-        <Modal
-          header="CONGRATULATIONS!"
+        <ModalSuccess
+          title={dict.FORM_SUCCESS_TITLE}
+          body={dict.FORM_SUCCESS_BODY_ADD}
           onDismiss={() => setShowSuccessModal(false)}
-        >
-          <span>The movie has been added to database successfully </span>
-        </Modal>
+        />
       )}
       <div className={styles.menu}>
         <Logo />

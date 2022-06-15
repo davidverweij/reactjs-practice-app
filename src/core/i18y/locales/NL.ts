@@ -15,9 +15,11 @@ const NL: I18yStrings = {
   SET_LANGUAGE: "taal",
   EXIT_BUTTON: "sluit venster",
   EDIT_BUTTON: "wijzig",
+  CONFIRM_BUTTON: "bevestig",
   DELETE_BUTTON: "verwijder",
   FORM_HEADER_ADD: "Voeg film toe",
   FORM_HEADER_DELETE: "Verwijder film",
+  FORM_BODY_DELETE: "Weet je zeker dat je deze film wilt verwijderen?",
   FORM_HEADER_EDIT: "Bewerk film",
   FORM_HEADER_SUCCESS: "Success!",
   FORM_TITLE: "Titel",
@@ -35,6 +37,9 @@ const NL: I18yStrings = {
     "Vul een score in tussen 0.1 and 10 (optioneel met 1 decimaal)",
   FORM_OVERVIEW_VALIDATION: "Vul een korte samenvatting in",
   FORM_GENRE_VALIDATION: "Selecteer ten minste één genre",
+  FORM_SUCCESS_TITLE: "Gefeliciteerd!",
+  FORM_SUCCESS_BODY_ADD: "De film is successvol aan de database toegevoegd",
+  FORM_SUCCESS_BODY_EDIT: "De film is successvol aangepast in de database",
 };
 
 const genres = {

@@ -2,9 +2,12 @@ import React, { useContext, useState } from "react";
 import LanguageContext from "../../core/contexts/i18y";
 import ContextMenu from "../ContextMenu/ContextMenu";
 import MovieForm from "../MovieForm/MovieForm";
-import { MovieProps, putMovie } from "../../core/api";
+import { MovieProps } from "../../core/api";
 
 import styles from "./Movie.module.scss";
+import ModalSuccess from "../../ui/ModalSuccess/ModalSuccess";
+import Modal from "../../ui/Modal/Modal";
+import Button from "../../ui/Button/Button";
 
 const Movie = ({
   id,
@@ -21,15 +24,22 @@ const Movie = ({
 
   const [menuState, setMenuState] = useState<boolean>(false);
   const [showEditor, setShowEditor] = useState<boolean>(false);
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 
   const onEditHandler = (): void => {
     setMenuState(false);
     setShowEditor((prev) => !prev);
   };
 
+  const onSubmitHandler = (): void => {
+    setShowEditor(false);
+    setShowSuccessModal(true);
+  };
+
   const onDeleteHandler = (): void => {
-    console.warn(`Not yet Implemented - deleting movie ${id}`);
     setMenuState(false);
+    setShowDeleteModal((prev) => !prev);
   };
 
   return (
@@ -46,8 +56,29 @@ const Movie = ({
           runtime={runtime.toString()}
           closeFormHandler={onEditHandler}
           formTitle={dict.FORM_HEADER_EDIT}
-          onSubmitHandler={putMovie}
+          onSubmitHandler={onSubmitHandler}
         />
+      )}
+      {showSuccessModal && (
+        <ModalSuccess
+          title={dict.FORM_SUCCESS_TITLE}
+          body={dict.FORM_SUCCESS_BODY_EDIT}
+          onDismiss={() => setShowSuccessModal(false)}
+        />
+      )}
+      {showDeleteModal && (
+        <Modal
+          className={styles["delete-modal"]}
+          header={dict.FORM_HEADER_DELETE}
+          onDismiss={onDeleteHandler}
+        >
+          <p>{dict.FORM_BODY_DELETE}</p>
+          <Button
+            className={styles["delete-button"]}
+            text={dict.CONFIRM_BUTTON}
+            onClick={onDeleteHandler}
+          />
+        </Modal>
       )}
       <div
         onMouseEnter={() => {
