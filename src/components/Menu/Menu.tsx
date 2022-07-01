@@ -23,6 +23,18 @@ const Menu = (): JSX.Element => {
     return setShowSuccessModal(true);
   };
 
+  const dismissSuccessModalHandler = (): void => {
+    setShowSuccessModal(false);
+  };
+
+  const closeFormHandler = (): void => {
+    setShowEditor(false);
+  };
+
+  const addMovieHandler = (): void => {
+    setShowEditor(true);
+  };
+
   return (
     <>
       {showEditor && (
@@ -35,7 +47,7 @@ const Menu = (): JSX.Element => {
           date=""
           rating=""
           runtime=""
-          closeFormHandler={() => setShowEditor(false)}
+          closeFormHandler={closeFormHandler}
           formTitle={dict.FORM_HEADER_ADD}
           onSubmitHandler={submitMovieHandler}
         />
@@ -44,7 +56,7 @@ const Menu = (): JSX.Element => {
         <ModalSuccess
           title={dict.FORM_SUCCESS_TITLE}
           body={dict.FORM_SUCCESS_BODY_ADD}
-          onDismiss={() => setShowSuccessModal(false)}
+          onDismiss={dismissSuccessModalHandler}
         />
       )}
       <div className={styles.menu}>
@@ -55,7 +67,7 @@ const Menu = (): JSX.Element => {
             className={styles.button}
             text={dict.ADD_MOVIE_BTN}
             icon={ICONS.PLUS}
-            onClick={() => setShowEditor(true)}
+            onClick={addMovieHandler}
           />
         </div>
         <div className={styles.search}>

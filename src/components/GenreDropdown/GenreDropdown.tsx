@@ -63,20 +63,17 @@ const GenreDropdown = ({
 
   const genreList = genreMapper({ genres, value, dispatch, action });
 
+  const toggleHandler = (): void => {
+    setShowDropdown((prev) => !prev);
+  };
+
   const buttonStyle = `${styles["genre-input"]} ${showDropdown && styles.open}`;
 
   return (
     <label className={styles.wrapper} htmlFor={id}>
       {title}
       <span className={buttonStyle}>
-        <button
-          id={id}
-          type="button"
-          name={id}
-          onClick={() => {
-            setShowDropdown((prev) => !prev);
-          }}
-        >
+        <button id={id} type="button" name={id} onClick={toggleHandler}>
           {placeholder}
         </button>
         {showDropdown && genreList}
@@ -87,19 +84,3 @@ const GenreDropdown = ({
 };
 
 export default GenreDropdown;
-
-// <div className={styles.sort}>
-//       <span className={styles["sort-label"]}>{dict.SORT_LABEL}</span>
-//       <div className={styles["select-wrapper"]}>
-//         <button
-//           className={styles.button}
-//           onClick={dropdownHandler}
-//           type="button"
-//         >
-//           {sortby[state as keyof I18ySortoptions]}
-//         </button>
-//         {showDropdown && (
-//           <SortByDropdown selectHandler={selectSortHandler} sortby={sortby} />
-//         )}
-//       </div>
-//     </div>

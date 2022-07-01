@@ -227,6 +227,13 @@ const MovieForm = ({
     dispatchForm,
   ] = useReducer(formReducer, initialFormState);
 
+  const resetHandler = (): void => {
+    dispatchForm({
+      type: FormActionType.RESET_FORM,
+      payload: "",
+    });
+  };
+
   const handleOnSubmit = async (): Promise<void> => {
     const states = [
       titleState,
@@ -347,12 +354,7 @@ const MovieForm = ({
           <Button
             className={styles.reset}
             text="Reset"
-            onClick={() => {
-              dispatchForm({
-                type: FormActionType.RESET_FORM,
-                payload: "",
-              });
-            }}
+            onClick={resetHandler}
           />
           <Button text="Submit" onClick={handleOnSubmit} />
         </div>

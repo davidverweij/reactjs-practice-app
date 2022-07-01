@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
-import Title from "../../components/Title/Title";
+import ModalOverlay from "../ModalOverlay/ModalOverlay";
 
 import styles from "./Modal.module.scss";
 
@@ -13,26 +13,6 @@ interface ModalProps {
 
 const Backdrop = (): JSX.Element => {
   return <div className={styles.backdrop} />;
-};
-
-const ModalOverlay = ({
-  onDismiss,
-  children,
-  header,
-  className,
-}: ModalProps): JSX.Element => {
-  return (
-    <div className={`${styles.modal} ${className}`}>
-      <button
-        aria-label="exit"
-        type="button"
-        onClick={onDismiss}
-        className={styles.exit}
-      />
-      {header && <Title className={styles.title} text={header} />}
-      {children}
-    </div>
-  );
 };
 
 const Modal = ({

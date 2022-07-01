@@ -10,18 +10,20 @@ interface ContextMenuProps {
 const ContextMenu = ({ onEdit, onDelete }: ContextMenuProps): JSX.Element => {
   const [dropdownState, setDropdownState] = useState<boolean>(false);
 
+  const exitHandler = (): void => {
+    setDropdownState(false);
+  };
+
+  const onShowDropdownHandler = (): void => {
+    setDropdownState(true);
+  };
+
   return (
     <>
-      <ContextMenuButton
-        onClick={() => {
-          setDropdownState(true);
-        }}
-      />
+      <ContextMenuButton onClick={onShowDropdownHandler} />
       {dropdownState && (
         <ContextMenuDropdown
-          onExit={() => {
-            setDropdownState(false);
-          }}
+          onExit={exitHandler}
           onEdit={onEdit}
           onDelete={onDelete}
         />

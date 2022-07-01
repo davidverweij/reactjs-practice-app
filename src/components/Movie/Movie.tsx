@@ -42,6 +42,14 @@ const Movie = ({
     setShowDeleteModal((prev) => !prev);
   };
 
+  const mouseEnterHandler = (): void => {
+    setMenuState(true);
+  };
+
+  const mouseExitHandler = (): void => {
+    setMenuState(false);
+  };
+
   return (
     <>
       {showEditor && (
@@ -81,12 +89,8 @@ const Movie = ({
         </Modal>
       )}
       <div
-        onMouseEnter={() => {
-          setMenuState(true);
-        }}
-        onMouseLeave={() => {
-          setMenuState(false);
-        }}
+        onMouseEnter={mouseEnterHandler}
+        onMouseLeave={mouseExitHandler}
         className={styles.movie}
       >
         <img alt={`${dict.MOVIE_POSTER_ALT} ${title}`} src={imgUrl} />

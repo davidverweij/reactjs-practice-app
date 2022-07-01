@@ -6,7 +6,33 @@ import { fetchMovies, MovieProps } from "../../core/api";
 import LanguageContext from "../../core/contexts/i18y";
 import GenreSelector from "../../components/GenreSelector/GenreSelector";
 import SortBySelector from "../../components/SortBySelector/SortBySelector";
-import { I18ySortoptions } from "../../core/constants/I18yConstants";
+import {
+  I18yGenres,
+  I18ySortoptions,
+} from "../../core/constants/I18yConstants";
+
+const moviesMapper = (
+  movies: MovieProps[],
+  genres: I18yGenres,
+  genreFilter: string,
+  sortFilter: string
+): MovieProps[] => {
+  return movies
+    .filter(
+      (m) =>
+        genreFilter === Object.keys(genres)[0] || m.genres.includes(genreFilter)
+    )
+    .sort((a, b) => {
+      const sortKey = sortFilter as keyof I18ySortoptions;
+      if (a[sortKey] < b[sortKey]) {
+        return -1;
+      }
+      if (a[sortKey] > b[sortKey]) {
+        return 1;
+      }
+      return 0;
+    });
+};
 
 const Dashboard = (): JSX.Element => {
   const { constants } = useContext(LanguageContext);
@@ -21,32 +47,23 @@ const Dashboard = (): JSX.Element => {
   const [filteredMovieState, setFilteredMovieState] = useState([]);
 
   const sortAndFilterHandler = (movies: MovieProps[]): void => {
-    const filteredMovies = movies
-      .filter(
-        (m) =>
-          genreState === Object.keys(constants.GENRES)[0] ||
-          m.genres.includes(genreState)
-      )
-      .sort((a, b) => {
-        const sortKey = sortState as keyof I18ySortoptions;
-        if (a[sortKey] < b[sortKey]) {
-          return -1;
-        }
-        if (a[sortKey] > b[sortKey]) {
-          return 1;
-        }
-        return 0;
-      });
+    const filteredMovies = moviesMapper(
+      movies,
+      constants.GENRES,
+      genreState,
+      sortState
+    );
     setFilteredMovieState(filteredMovies);
   };
 
   useEffect(() => {
-    fetchMovies()
-      .then((movies) => {
-        setMoviesState(movies);
-        sortAndFilterHandler(movies);
-      })
-      .catch(console.error);
+    const fetchData = async (): Promise<void> => {
+      const data = await fetchMovies();
+      setMoviesState(data);
+      sortAndFilterHandler(data);
+    };
+
+    fetchData().catch(console.error);
   }, [fetchMovies]);
 
   useEffect(() => {

@@ -36,6 +36,16 @@ interface MovieFormInputProps extends MovieFormBaseProps {
   type: string;
 }
 
+const changeActionCreator = (
+  action: FormActionType,
+  payload: string
+): FormAction => {
+  return {
+    type: action,
+    payload,
+  };
+};
+
 const MovieFormInput = ({
   title,
   placeholder,
@@ -47,6 +57,12 @@ const MovieFormInput = ({
   showValidation,
   validationMessage,
 }: MovieFormInputProps): JSX.Element => {
+  const onChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    dispatch(changeActionCreator(action, event.target.value));
+  };
+
   return (
     <label htmlFor={id}>
       {title}
@@ -56,12 +72,7 @@ const MovieFormInput = ({
         id={id}
         name={id}
         value={value}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          dispatch({
-            type: action,
-            payload: event.target.value,
-          });
-        }}
+        onChange={onChangeHandler}
       />
       {showValidation && <span>{validationMessage}</span>}
     </label>
@@ -78,6 +89,12 @@ export const MovieFormTextArea = ({
   showValidation,
   validationMessage,
 }: MovieFormBaseProps): JSX.Element => {
+  const onChangeHandler = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    dispatch(changeActionCreator(action, event.target.value));
+  };
+
   return (
     <label htmlFor={id}>
       {title}
@@ -86,12 +103,7 @@ export const MovieFormTextArea = ({
         id={id}
         name={id}
         value={value}
-        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-          dispatch({
-            type: action,
-            payload: event.target.value,
-          });
-        }}
+        onChange={onChangeHandler}
       />
       {showValidation && <span>{validationMessage}</span>}
     </label>

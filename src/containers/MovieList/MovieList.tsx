@@ -9,36 +9,16 @@ interface MovieListProps {
   movies: MovieProps[];
 }
 
-const movieListMapper = ({
-  id,
-  title,
-  genres,
-  releasedate,
-  imgUrl,
-  overview,
-  rating,
-  runtime,
-  url,
-}: MovieProps): JSX.Element => {
-  return (
-    <Movie
-      key={id}
-      id={id}
-      title={title}
-      genres={genres}
-      releasedate={releasedate}
-      imgUrl={imgUrl}
-      rating={rating}
-      overview={overview}
-      runtime={runtime}
-      url={url}
-    />
-  );
+const movieListMapper = (movies: MovieProps[]): JSX.Element[] => {
+  return movies.map((props: MovieProps) => (
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Movie key={props.id} {...props} />
+  ));
 };
 
 const MovieList = ({ movies }: MovieListProps): JSX.Element => {
   const { dict } = useContext(LanguageContext);
-  const movieList = movies.map(movieListMapper);
+  const movieList = movieListMapper(movies);
 
   return (
     <>

@@ -14,7 +14,7 @@ const genreMapper = ({
   state,
   handler,
 }: GenreSelectorProps): JSX.Element[] => {
-  const mapped = Object.entries(genres).map(([key, value]) => (
+  return Object.entries(genres).map(([key, value]) => (
     <button
       type="button"
       onClick={() => handler(key)}
@@ -24,7 +24,6 @@ const genreMapper = ({
       {value}
     </button>
   ));
-  return mapped;
 };
 
 const GenreSelector = ({

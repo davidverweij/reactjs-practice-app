@@ -1,0 +1,23 @@
+@use "../../style/variables" as v;
+
+.modal {
+  position: absolute;
+  align-self: auto;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 0);
+  width: 60%;
+  z-index: 100;
+  overflow: hidden;
+  background: v.$base-dark;
+  padding: 57px;
+  color: v.$white;
+
+  .title {
+    margin: 6px 0;
+    padding-bottom: 38px;
+  }
+  .exit {
+    @include v.exit;
+  }
+}
