@@ -1,7 +1,6 @@
 declare namespace SortByDropdownModuleScssNamespace {
   export interface ISortByDropdownModuleScss {
     dropdown: string;
-    hide: string;
   }
 }
 

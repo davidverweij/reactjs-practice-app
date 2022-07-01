@@ -2,9 +2,21 @@ import React from "react";
 
 import styles from "./ContextMenuButton.module.scss";
 
-const ContextMenuButton = (): JSX.Element => {
+interface ContextMenuButtonProps {
+  onClick: () => void;
+}
+
+const ContextMenuButton = ({
+  onClick,
+}: ContextMenuButtonProps): JSX.Element => {
   return (
-    <div className={styles.edit}>
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={onClick}
+      className={styles.edit}
+    >
       <div />
       <div className={styles.dot} />
       <div className={styles.dot} />

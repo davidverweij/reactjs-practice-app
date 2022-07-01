@@ -4,10 +4,13 @@ import styles from "./Title.module.scss";
 
 interface TitleProps {
   text: string;
+  className?: string;
 }
 
-const Title = ({ text }: TitleProps): JSX.Element => {
-  return <h1 className={styles.title}>{text}</h1>;
+const Title = ({ text, className }: TitleProps): JSX.Element => {
+  return (
+    <h1 className={`${className} ${styles.title}`}>{text.toUpperCase()}</h1>
+  );
 };
 
 export default Title;

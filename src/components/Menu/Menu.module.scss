@@ -12,6 +12,12 @@
   align-self: flex-end;
   display: flex;
   gap: 20px;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media (min-width: v.$media-min) {
+    flex-direction: row;
+  }
 }
 
 .button {

@@ -12,3 +12,12 @@
   border-bottom: 1px solid v.$black;
   margin: 0;
 }
+
+.selector {
+  @include v.regular;
+  color: v.$white;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 0;
+}

@@ -1,5 +1,5 @@
-import React, { Component, ReactNode, ErrorInfo } from "react";
-import I18Y from "../../core/i18y";
+import React, { Component, ReactNode, ErrorInfo, useContext } from "react";
+import LanguageContext from "../../core/contexts/i18y";
 
 import styles from "./ErrorBoundary.module.scss";
 
@@ -12,7 +12,9 @@ interface ErrorBoundaryState {
 }
 
 const ErrorComponent = (): JSX.Element => {
-  return <div className={styles["error-container"]}>{I18Y().ERROR_MSG}</div>;
+  const { dict } = useContext(LanguageContext);
+
+  return <div className={styles["error-container"]}>{dict.ERROR_MSG}</div>;
 };
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

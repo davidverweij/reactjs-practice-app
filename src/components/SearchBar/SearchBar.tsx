@@ -1,5 +1,5 @@
-import React from "react";
-import I18Y from "../../core/i18y";
+import React, { useContext } from "react";
+import LanguageContext from "../../core/contexts/i18y";
 import Button from "../../ui/Button/Button";
 import Title from "../Title/Title";
 
@@ -10,6 +10,8 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
+
   const onClickHandler = (): void => {
     // eslint-disable-next-line no-console
     console.warn("Not (yet) implemented");
@@ -17,16 +19,16 @@ const SearchBar = ({ className }: SearchBarProps): JSX.Element => {
 
   return (
     <div className={`${className} ${styles.search}`}>
-      <Title text={I18Y().HOME_TITLE} />
+      <Title text={dict.HOME_TITLE} />
       <div className={styles["search-bar"]}>
         <input
           className={styles.bar}
           type="text"
-          placeholder={I18Y().SEARCH_PLACEHOLDER}
+          placeholder={dict.SEARCH_PLACEHOLDER}
         />
         <Button
           className={styles.button}
-          text={I18Y().SEARCH_BTN}
+          text={dict.SEARCH_BTN}
           onClick={onClickHandler}
         />
       </div>

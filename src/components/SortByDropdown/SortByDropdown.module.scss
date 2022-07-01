@@ -1,9 +1,5 @@
 @use "../../style/variables" as v;
 
-.hide {
-  display: none !important;
-}
-
 .dropdown {
   position: absolute;
   list-style: none;
@@ -13,12 +9,15 @@
   background-color: v.$base-regular;
   margin-top: 15px;
 
+  z-index: 1;
+
   button {
     border: none;
     background: none;
     width: 100%;
     padding: 7px 10px;
     text-align: left;
+    text-transform: uppercase;
 
     cursor: inherit;
     font-size: inherit;

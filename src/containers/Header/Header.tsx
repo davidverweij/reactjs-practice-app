@@ -1,5 +1,5 @@
-import React from "react";
-import I18Y from "../../core/i18y";
+import React, { useContext } from "react";
+import LanguageContext from "../../core/contexts/i18y";
 import styles from "./Header.module.scss";
 
 interface HeaderProps {
@@ -7,9 +7,11 @@ interface HeaderProps {
 }
 
 const Header = ({ children }: HeaderProps): JSX.Element => {
+  const { dict } = useContext(LanguageContext);
+
   return (
     <>
-      <img alt={I18Y().HEADER_IMAGE_ALT} className={styles["header-img"]} />
+      <img alt={dict.HEADER_IMAGE_ALT} className={styles["header-img"]} />
       <div className={styles.header}>{children}</div>
       <hr className={styles.hr} />
     </>

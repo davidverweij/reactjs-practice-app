@@ -12,6 +12,10 @@ $side-padding: 60px;
 
 /* Fonts */
 
+@mixin thin {
+  font-weight: 100;
+}
+
 @mixin light {
   font-weight: 300;
 }
@@ -30,4 +34,34 @@ $side-padding: 60px;
 
 @mixin bold {
   font-weight: 900;
+}
+
+/* Media Sizes */
+
+$media-max: 1260px;
+$media-mid: 960px;
+$media-min: 480px;
+
+/* Reusables */
+
+@mixin exit {
+  @include thin;
+  font-size: 60px;
+  line-height: 30px;
+  position: absolute;
+  padding: 15px;
+  background: none;
+  border: none;
+  color: $white;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+
+  &::after {
+    font-family: "Montserrat Variable";
+    content: "\00d7";
+  }
+  &:hover::after {
+    color: $red;
+  }
 }
